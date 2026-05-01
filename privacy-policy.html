@@ -7,344 +7,11 @@
 <meta name="description" content="Privacy Policy for MergePDF. Learn how we handle your data — spoiler: we don't collect any." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet" />
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  :root {
-    --bg: #0d0d0d;
-    --surface: #161616;
-    --surface2: #1e1e1e;
-    --border: rgba(255,255,255,0.08);
-    --border-hover: rgba(255,255,255,0.18);
-    --accent: #e8ff6b;
-    --text: #f0ede8;
-    --text-muted: #888;
-    --text-dim: #555;
-    --radius: 16px;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    line-height: 1.75;
-  }
-
-  /* NAV */
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 40px;
-    border-bottom: 1px solid var(--border);
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(13,13,13,0.92);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-  }
-  .logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 22px;
-    letter-spacing: -0.5px;
-    text-decoration: none;
-    color: var(--text);
-  }
-  .logo span { color: var(--accent); }
-  .nav-back {
-    font-size: 13px;
-    color: var(--text-muted);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 14px;
-    border: 1px solid var(--border);
-    border-radius: 99px;
-    transition: all 0.15s;
-  }
-  .nav-back:hover { border-color: var(--border-hover); color: var(--text); }
-
-  /* HERO */
-  .page-hero {
-    text-align: center;
-    padding: 72px 24px 56px;
-    border-bottom: 1px solid var(--border);
-  }
-  .page-tag {
-    display: inline-block;
-    background: rgba(232,255,107,0.1);
-    border: 1px solid rgba(232,255,107,0.28);
-    color: var(--accent);
-    font-size: 11px;
-    font-weight: 600;
-    padding: 4px 14px;
-    border-radius: 99px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-  .page-hero h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(32px, 5vw, 54px);
-    font-weight: 800;
-    letter-spacing: -2px;
-    margin-bottom: 14px;
-  }
-  .page-hero p {
-    color: var(--text-muted);
-    font-size: 15px;
-    font-weight: 300;
-  }
-  .last-updated {
-    display: inline-block;
-    margin-top: 14px;
-    font-size: 12px;
-    color: var(--text-dim);
-    background: var(--surface2);
-    padding: 4px 12px;
-    border-radius: 99px;
-    border: 1px solid var(--border);
-  }
-
-  /* LAYOUT */
-  .page-layout {
-    display: flex;
-    gap: 40px;
-    max-width: 1100px;
-    margin: 60px auto;
-    padding: 0 24px 80px;
-    width: 100%;
-    align-items: flex-start;
-  }
-
-  /* TABLE OF CONTENTS */
-  .toc {
-    width: 220px;
-    flex-shrink: 0;
-    position: sticky;
-    top: 90px;
-  }
-  .toc-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: var(--text-dim);
-    margin-bottom: 14px;
-  }
-  .toc-list { list-style: none; }
-  .toc-list li { margin-bottom: 4px; }
-  .toc-list a {
-    font-size: 13px;
-    color: var(--text-muted);
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 8px;
-    display: block;
-    transition: all 0.15s;
-    border-left: 2px solid transparent;
-  }
-  .toc-list a:hover {
-    color: var(--text);
-    background: var(--surface);
-    border-left-color: var(--accent);
-  }
-
-  /* CONTENT */
-  .content {
-    flex: 1;
-    min-width: 0;
-    max-width: 680px;
-  }
-
-  .section {
-    margin-bottom: 52px;
-    padding-bottom: 52px;
-    border-bottom: 1px solid var(--border);
-  }
-  .section:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
-
-  .section-num {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 10px;
-  }
-
-  .section h2 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 22px;
-    letter-spacing: -0.5px;
-    margin-bottom: 18px;
-    scroll-margin-top: 100px;
-  }
-
-  .section p {
-    font-size: 15px;
-    color: var(--text-muted);
-    margin-bottom: 14px;
-    line-height: 1.8;
-  }
-  .section p:last-child { margin-bottom: 0; }
-
-  .section ul {
-    list-style: none;
-    margin: 16px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .section ul li {
-    font-size: 15px;
-    color: var(--text-muted);
-    padding-left: 20px;
-    position: relative;
-    line-height: 1.7;
-  }
-  .section ul li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-size: 13px;
-  }
-
-  /* Highlight box */
-  .highlight-box {
-    background: rgba(232,255,107,0.06);
-    border: 1px solid rgba(232,255,107,0.2);
-    border-radius: 12px;
-    padding: 20px 22px;
-    margin: 20px 0;
-  }
-  .highlight-box p {
-    color: var(--text);
-    font-size: 15px;
-    margin: 0;
-    font-weight: 400;
-  }
-  .highlight-box strong { color: var(--accent); }
-
-  /* Info box */
-  .info-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 18px 22px;
-    margin: 20px 0;
-  }
-  .info-box p {
-    color: var(--text-muted);
-    font-size: 14px;
-    margin: 0;
-  }
-  .info-box .info-label {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: var(--text-dim);
-    margin-bottom: 6px;
-  }
-
-  /* Contact */
-  .contact-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 28px;
-    text-align: center;
-    margin-top: 20px;
-  }
-  .contact-card p { color: var(--text-muted); font-size: 14px; margin-bottom: 14px; }
-  .contact-email {
-    display: inline-block;
-    background: rgba(232,255,107,0.1);
-    border: 1px solid rgba(232,255,107,0.25);
-    color: var(--accent);
-    font-size: 14px;
-    font-weight: 500;
-    padding: 10px 22px;
-    border-radius: 10px;
-    text-decoration: none;
-    transition: background 0.15s;
-  }
-  .contact-email:hover { background: rgba(232,255,107,0.18); }
-
-  /* AD SLOT */
-  .ad-slot {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--surface);
-    border: 1px dashed var(--border-hover);
-    border-radius: 10px;
-    color: var(--text-dim);
-    font-size: 9px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    overflow: hidden;
-    position: relative;
-    margin: 40px 0;
-  }
-  .ad-slot::before {
-    content: 'Advertisement';
-    position: absolute;
-    top: 6px; left: 50%;
-    transform: translateX(-50%);
-    font-size: 9px;
-    letter-spacing: 1px;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-  .ad-inline { width: 100%; height: 90px; }
-
-  /* FOOTER */
-  footer {
-    margin-top: auto;
-    text-align: center;
-    padding: 28px 24px;
-    font-size: 12px;
-    color: var(--text-dim);
-    border-top: 1px solid var(--border);
-  }
-  footer a { color: var(--text-muted); text-decoration: none; }
-  footer a:hover { color: var(--text); }
-
-  @media (max-width: 768px) {
-    nav { padding: 16px 20px; }
-    .toc { display: none; }
-    .page-layout { margin-top: 40px; }
-    .page-hero h1 { letter-spacing: -1px; }
-  }
-</style>
-
-<!-- ======================================================
-     ADSENSE: Replace YOUR_PUB_ID with your ca-pub-XXXXXXXX
-     ====================================================== -->
+<!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUB_ID" crossorigin="anonymous"></script>
-
-<!-- ======================================================
-     MEDIA.NET: Replace YOUR_SITE_ID with your Media.net ID
-     ====================================================== -->
+<!-- Media.net -->
 <script>
   window._mNHandle = window._mNHandle || {};
   window._mNHandle.queue = window._mNHandle.queue || [];
@@ -355,34 +22,547 @@
 </script>
 <script src="https://contextual.media.net/dmedianet.js?cid=YOUR_SITE_ID" async="async"></script>
 
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0f0810;
+  --bg2: #150c16;
+  --surface: #1a0e1b;
+  --surface2: #221526;
+  --surface3: #2b1b2f;
+  --border: rgba(255,180,200,0.07);
+  --border-hover: rgba(255,180,200,0.18);
+  --gold: #ffb8a0;
+  --gold-dim: #e8836a;
+  --text: #f5eef0;
+  --text-muted: #7a6068;
+  --text-mid: #a8909a;
+  --green: #ff9eb5;
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Geist', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  line-height: 1.75;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.6;
+}
+
+/* ── NAV ── */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(15,8,16,0.88);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.logo {
+  font-family: 'Geist', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  width: 30px;
+  height: 30px;
+  background: var(--gold);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-name em { font-style: normal; color: var(--gold); }
+
+.nav-back {
+  font-size: 12px;
+  font-family: 'DM Mono', monospace;
+  color: var(--text-muted);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  transition: all 0.15s;
+  letter-spacing: 0.3px;
+}
+
+.nav-back:hover { border-color: var(--border-hover); color: var(--text); }
+
+/* ── AD ── */
+.ad-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1px dashed rgba(255,255,255,0.05);
+  border-radius: 10px;
+  color: var(--text-muted);
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  overflow: hidden;
+  position: relative;
+}
+.ad-slot::before {
+  content: 'Advertisement';
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  opacity: 0.5;
+  white-space: nowrap;
+}
+.ad-inline {
+  width: 100%;
+  height: 90px;
+}
+
+/* ── PAGE HERO ── */
+.page-hero {
+  padding: 80px 24px 64px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,100,140,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.page-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.page-tag {
+  display: inline-block;
+  background: rgba(255,120,140,0.08);
+  border: 1px solid rgba(255,140,130,0.22);
+  color: var(--gold);
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+  padding: 5px 14px;
+  border-radius: 99px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.page-hero h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 400;
+  letter-spacing: -2px;
+  color: var(--text);
+  line-height: 1.05;
+}
+
+.page-hero-meta {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.last-updated {
+  display: inline-block;
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  color: var(--text-muted);
+  background: var(--surface2);
+  padding: 5px 13px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+
+.hero-tagline {
+  font-size: 13px;
+  color: var(--text-muted);
+  max-width: 240px;
+  line-height: 1.6;
+  text-align: right;
+}
+
+/* ── LAYOUT ── */
+.page-layout {
+  display: flex;
+  gap: 48px;
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 24px 100px;
+  width: 100%;
+  align-items: flex-start;
+}
+
+/* ── TOC ── */
+.toc {
+  width: 210px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 90px;
+}
+
+.toc-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.toc-title {
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+}
+
+.toc-line { flex: 1; height: 1px; background: var(--border); }
+
+.toc-list { list-style: none; }
+.toc-list li { margin-bottom: 2px; }
+.toc-list a {
+  font-size: 12px;
+  font-family: 'DM Mono', monospace;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+
+.toc-list a:hover {
+  color: var(--text);
+  background: var(--surface);
+  border-left-color: var(--gold);
+}
+
+.toc-num {
+  font-size: 9px;
+  color: var(--text-muted);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+/* ── CONTENT ── */
+.content {
+  flex: 1;
+  min-width: 0;
+  max-width: 680px;
+}
+
+.section {
+  margin-bottom: 56px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.section-num {
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  opacity: 0.8;
+}
+
+.section h2 {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  font-size: 30px;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  scroll-margin-top: 100px;
+  color: var(--text);
+  line-height: 1.15;
+}
+
+.section p {
+  font-size: 15px;
+  color: var(--text-mid);
+  margin-bottom: 14px;
+  line-height: 1.8;
+}
+
+.section p:last-child { margin-bottom: 0; }
+
+.section ul {
+  list-style: none;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.section ul li {
+  font-size: 15px;
+  color: var(--text-mid);
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.75;
+}
+
+.section ul li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-family: 'DM Mono', monospace;
+  opacity: 0.6;
+}
+
+.section ul li strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ── CALLOUT BOXES ── */
+.highlight-box {
+  background: rgba(255,100,140,0.05);
+  border: 1px solid rgba(255,130,110,0.18);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.highlight-box::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--gold);
+  border-radius: 0 2px 2px 0;
+}
+
+.highlight-box p {
+  font-size: 14px;
+  margin: 0;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.highlight-box strong { color: var(--gold); }
+
+.info-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 0;
+}
+
+.info-label {
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gold);
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.info-box p {
+  font-size: 14px;
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+.info-box p a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.info-box p a:hover { text-decoration: underline; }
+
+/* ── CONTACT CARD ── */
+.contact-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-top: 18px;
+}
+
+.contact-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.contact-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 14px;
+  color: var(--gold);
+  text-decoration: none;
+  border: 1px solid rgba(255,140,130,0.22);
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  background: rgba(255,130,110,0.07);
+  transition: all 0.15s;
+}
+
+.contact-email:hover {
+  background: rgba(255,130,110,0.11);
+  border-color: rgba(255,140,120,0.38);
+}
+
+/* ── FOOTER ── */
+footer {
+  margin-top: auto;
+  padding: 28px 40px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 12px;
+  font-family: 'DM Mono', monospace;
+  color: var(--text-muted);
+}
+
+footer a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+footer a:hover { color: var(--gold); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 800px) {
+  .toc { display: none; }
+  .page-layout { gap: 0; }
+  .content { max-width: 100%; }
+  .page-hero-inner { flex-direction: column; align-items: flex-start; }
+  .page-hero-meta { text-align: left; }
+  .hero-tagline { text-align: left; }
+}
+
+@media (max-width: 600px) {
+  nav { padding: 14px 20px; }
+  .page-hero { padding: 60px 20px 44px; }
+  .page-layout { padding: 0 20px 80px; margin-top: 40px; }
+}
+
+/* ── ENTRY ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.page-tag { animation: fadeUp 0.4s ease both; }
+.page-hero h1 { animation: fadeUp 0.4s ease 0.08s both; }
+.page-hero-meta { animation: fadeUp 0.4s ease 0.16s both; }
+</style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a class="logo" href="index.html">Merge<span>PDF</span></a>
+  <a class="logo" href="index.html">
+    <div class="logo-icon">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 2h7l3 3v9H3V2Z" fill="#111" stroke="#111"/>
+        <path d="M10 2v3h3" fill="none" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+        <path d="M5 8h6M5 11h4" stroke="#ffb8a0" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <span class="logo-name">Merge<em>PDF</em></span>
+  </a>
   <a class="nav-back" href="index.html">← Back to Tool</a>
 </nav>
 
-<!-- AD: Leaderboard top -->
-<div class="ad-slot ad-inline" style="margin:0; border-radius:0; border-left:none; border-right:none; border-top:none;">
-  <!-- ADSENSE LEADERBOARD -->
+<!-- AD: Leaderboard -->
+<div class="ad-slot ad-inline" style="border-radius:0; border-left:none; border-right:none; border-top:none; height:90px;">
   <ins class="adsbygoogle"
     style="display:inline-block;width:728px;height:90px"
     data-ad-client="ca-pub-YOUR_PUB_ID"
     data-ad-slot="YOUR_SLOT_ID_1">
   </ins>
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  <!-- MEDIA.NET LEADERBOARD (use one or the other, not both) -->
-  <!-- <div id="YOUR_MEDIANET_DIV_ID"></div> -->
 </div>
 
 <!-- HERO -->
 <div class="page-hero">
-  <div class="page-tag">Legal</div>
-  <h1>Privacy Policy</h1>
-  <p>We built MergePDF to be private by design. Here's exactly what that means.</p>
-  <span class="last-updated">Last updated: May 1, 2026</span>
+  <div class="page-hero-inner">
+    <div>
+      <div class="page-tag">Legal</div>
+      <h1>Privacy<br><em>Policy</em></h1>
+    </div>
+    <div class="page-hero-meta">
+      <div class="last-updated">Last updated: May 1, 2026</div>
+      <p class="hero-tagline">Built private by design. Here's exactly what that means.</p>
+    </div>
+  </div>
 </div>
 
 <!-- CONTENT -->
@@ -390,18 +570,21 @@
 
   <!-- Table of Contents -->
   <nav class="toc" aria-label="Table of contents">
-    <div class="toc-title">On this page</div>
+    <div class="toc-header">
+      <div class="toc-title">Contents</div>
+      <div class="toc-line"></div>
+    </div>
     <ul class="toc-list">
-      <li><a href="#overview">Overview</a></li>
-      <li><a href="#data-collected">Data we collect</a></li>
-      <li><a href="#file-privacy">Your files</a></li>
-      <li><a href="#cookies">Cookies</a></li>
-      <li><a href="#advertising">Advertising</a></li>
-      <li><a href="#third-parties">Third parties</a></li>
-      <li><a href="#children">Children's privacy</a></li>
-      <li><a href="#your-rights">Your rights</a></li>
-      <li><a href="#changes">Policy changes</a></li>
-      <li><a href="#contact">Contact us</a></li>
+      <li><a href="#overview"><span class="toc-num">01</span>Overview</a></li>
+      <li><a href="#data-collected"><span class="toc-num">02</span>Data we collect</a></li>
+      <li><a href="#file-privacy"><span class="toc-num">03</span>Your files</a></li>
+      <li><a href="#cookies"><span class="toc-num">04</span>Cookies</a></li>
+      <li><a href="#advertising"><span class="toc-num">05</span>Advertising</a></li>
+      <li><a href="#third-parties"><span class="toc-num">06</span>Third parties</a></li>
+      <li><a href="#children"><span class="toc-num">07</span>Children's privacy</a></li>
+      <li><a href="#your-rights"><span class="toc-num">08</span>Your rights</a></li>
+      <li><a href="#changes"><span class="toc-num">09</span>Policy changes</a></li>
+      <li><a href="#contact"><span class="toc-num">10</span>Contact us</a></li>
     </ul>
   </nav>
 
@@ -442,8 +625,7 @@
     </div>
 
     <!-- AD: Mid-content inline -->
-    <div class="ad-slot ad-inline">
-      <!-- ADSENSE MID-CONTENT -->
+    <div class="ad-slot ad-inline" style="margin: 40px 0; border-radius: 10px;">
       <ins class="adsbygoogle"
         style="display:inline-block;width:728px;height:90px"
         data-ad-client="ca-pub-YOUR_PUB_ID"
@@ -458,8 +640,8 @@
       <p>We use the following types of cookies on this website:</p>
       <ul>
         <li><strong>Essential cookies</strong> — required for the site to function correctly. These do not track you.</li>
-        <li><strong>Analytics cookies</strong> — if analytics are enabled, these help us understand how visitors use the site (pages viewed, time spent, etc.) in aggregate, anonymized form.</li>
-        <li><strong>Advertising cookies</strong> — set by Google AdSense and Media.net to show relevant ads. These may track your browsing behavior across websites (see Advertising section).</li>
+        <li><strong>Analytics cookies</strong> — if analytics are enabled, these help us understand how visitors use the site in aggregate, anonymized form.</li>
+        <li><strong>Advertising cookies</strong> — set by Google AdSense and Media.net to show relevant ads. These may track your browsing behavior across websites.</li>
       </ul>
       <p>You can control or disable cookies through your browser settings. Note that disabling advertising cookies will not remove ads — it will only make them less relevant to you.</p>
     </div>
@@ -469,17 +651,17 @@
       <h2>Advertising</h2>
       <p>MergePDF is free to use and is supported by advertising. We display ads through the following networks:</p>
 
-      <div class="info-box">
+      <div class="info-box" style="margin-top:16px">
         <div class="info-label">Google AdSense</div>
-        <p>Google uses cookies to serve ads based on your prior visits to this website and other sites. You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener" style="color:var(--accent)">Google's Ad Settings</a>. Google's use of advertising cookies enables it and its partners to serve ads to you based on your visit to MergePDF and/or other websites.</p>
+        <p>Google uses cookies to serve ads based on your prior visits to this website and other sites. You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google's Ad Settings</a>.</p>
       </div>
 
-      <div class="info-box" style="margin-top:14px">
+      <div class="info-box" style="margin-top:12px">
         <div class="info-label">Media.net</div>
-        <p>Media.net uses contextual and behavioral data to display relevant ads. Their privacy policy is available at <a href="https://www.media.net/privacy-policy" target="_blank" rel="noopener" style="color:var(--accent)">media.net/privacy-policy</a>. You can opt out of Media.net personalized ads via their opt-out page.</p>
+        <p>Media.net uses contextual and behavioral data to display relevant ads. Their privacy policy is available at <a href="https://www.media.net/privacy-policy" target="_blank" rel="noopener">media.net/privacy-policy</a>.</p>
       </div>
 
-      <p style="margin-top:18px">These advertising partners may collect data such as your IP address, device identifiers, and browsing behavior to serve targeted advertisements. We do not have direct access to this data.</p>
+      <p style="margin-top:20px">These advertising partners may collect data such as your IP address, device identifiers, and browsing behavior to serve targeted advertisements. We do not have direct access to this data.</p>
       <p>We do not sell your personal data to advertisers or any other third parties.</p>
     </div>
 
@@ -488,10 +670,10 @@
       <h2>Third-party services</h2>
       <p>MergePDF uses the following third-party services, each with their own privacy policies:</p>
       <ul>
-        <li><strong>Google Fonts</strong> — loads fonts from Google's servers. Google may log your IP address. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--accent)">Google Privacy Policy</a></li>
-        <li><strong>pdf-lib (Cloudflare CDN)</strong> — the open-source PDF library is loaded from Cloudflare's CDN. Cloudflare may log basic request data. No user content is transmitted.</li>
-        <li><strong>Google AdSense</strong> — advertising network. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--accent)">Google Privacy Policy</a></li>
-        <li><strong>Media.net</strong> — advertising network. <a href="https://www.media.net/privacy-policy" target="_blank" rel="noopener" style="color:var(--accent)">Media.net Privacy Policy</a></li>
+        <li><strong>Google Fonts</strong> — loads fonts from Google's servers. Google may log your IP address. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--gold)">Google Privacy Policy</a></li>
+        <li><strong>pdf-lib (Cloudflare CDN)</strong> — the open-source PDF library is loaded from Cloudflare's CDN. No user content is transmitted.</li>
+        <li><strong>Google AdSense</strong> — advertising network. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--gold)">Google Privacy Policy</a></li>
+        <li><strong>Media.net</strong> — advertising network. <a href="https://www.media.net/privacy-policy" target="_blank" rel="noopener" style="color:var(--gold)">Media.net Privacy Policy</a></li>
       </ul>
     </div>
 
@@ -509,7 +691,7 @@
         <li><strong>Right to access</strong> — request a copy of the data we hold about you</li>
         <li><strong>Right to deletion</strong> — request that we delete your personal data</li>
         <li><strong>Right to opt out</strong> — opt out of personalized advertising via Google and Media.net opt-out tools</li>
-        <li><strong>GDPR (EU users)</strong> — you have rights under the General Data Protection Regulation including the right to data portability and the right to lodge a complaint with a supervisory authority</li>
+        <li><strong>GDPR (EU users)</strong> — you have rights under the General Data Protection Regulation including the right to data portability and to lodge a complaint with a supervisory authority</li>
         <li><strong>CCPA (California users)</strong> — you have the right to know what data is collected and to opt out of the sale of personal information</li>
       </ul>
       <p>To exercise these rights, contact us at the email below.</p>
@@ -527,18 +709,22 @@
       <p>If you have any questions, concerns, or requests regarding this Privacy Policy, please reach out:</p>
       <div class="contact-card">
         <p>We typically respond within 2–3 business days.</p>
-        <!-- Replace with your real email address -->
-        <a class="contact-email" href="mailto:privacy@mergepdf.com">privacy@mergepdf.com</a>
+        <a class="contact-email" href="mailto:privacy@mergepdf.com">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <rect x="1" y="3" width="12" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M1 4l6 4 6-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          privacy@mergepdf.com
+        </a>
       </div>
     </div>
 
-  </div><!-- end .content -->
-</div><!-- end .page-layout -->
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer>
-  <p>&copy; 2026 MergePDF &mdash; <a href="index.html">Home</a> &middot; <a href="privacy-policy.html">Privacy Policy</a></p>
-  <p style="margin-top:8px;">Powered by <a href="https://pdf-lib.js.org/" target="_blank" rel="noopener">pdf-lib</a></p>
+  <p>&copy; 2026 MergePDF &mdash; <a href="index.html">Home</a> &middot; <a href="privacy-policy.html">Privacy Policy</a> &middot; Powered by <a href="https://pdf-lib.js.org/" target="_blank" rel="noopener">pdf-lib</a></p>
 </footer>
 
 </body>
