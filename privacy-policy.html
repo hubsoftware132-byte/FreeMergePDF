@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy — MergePDF</title>
+<meta name="description" content="Privacy Policy for MergePDF. Learn how we handle your data — spoiler: we don't collect any." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0d0d;
+    --surface: #161616;
+    --surface2: #1e1e1e;
+    --border: rgba(255,255,255,0.08);
+    --border-hover: rgba(255,255,255,0.18);
+    --accent: #e8ff6b;
+    --text: #f0ede8;
+    --text-muted: #888;
+    --text-dim: #555;
+    --radius: 16px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.75;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,13,13,0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .logo span { color: var(--accent); }
+  .nav-back {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    transition: all 0.15s;
+  }
+  .nav-back:hover { border-color: var(--border-hover); color: var(--text); }
+
+  /* HERO */
+  .page-hero {
+    text-align: center;
+    padding: 72px 24px 56px;
+    border-bottom: 1px solid var(--border);
+  }
+  .page-tag {
+    display: inline-block;
+    background: rgba(232,255,107,0.1);
+    border: 1px solid rgba(232,255,107,0.28);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 14px;
+    border-radius: 99px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .page-hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 5vw, 54px);
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 14px;
+  }
+  .page-hero p {
+    color: var(--text-muted);
+    font-size: 15px;
+    font-weight: 300;
+  }
+  .last-updated {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--text-dim);
+    background: var(--surface2);
+    padding: 4px 12px;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+  }
+
+  /* LAYOUT */
+  .page-layout {
+    display: flex;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 24px 80px;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  /* TABLE OF CONTENTS */
+  .toc {
+    width: 220px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 90px;
+  }
+  .toc-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--text-dim);
+    margin-bottom: 14px;
+  }
+  .toc-list { list-style: none; }
+  .toc-list li { margin-bottom: 4px; }
+  .toc-list a {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 8px;
+    display: block;
+    transition: all 0.15s;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    background: var(--surface);
+    border-left-color: var(--accent);
+  }
+
+  /* CONTENT */
+  .content {
+    flex: 1;
+    min-width: 0;
+    max-width: 680px;
+  }
+
+  .section {
+    margin-bottom: 52px;
+    padding-bottom: 52px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .section-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+  }
+
+  .section h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+    margin-bottom: 18px;
+    scroll-margin-top: 100px;
+  }
+
+  .section p {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    line-height: 1.8;
+  }
+  .section p:last-child { margin-bottom: 0; }
+
+  .section ul {
+    list-style: none;
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .section ul li {
+    font-size: 15px;
+    color: var(--text-muted);
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.7;
+  }
+  .section ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 13px;
+  }
+
+  /* Highlight box */
+  .highlight-box {
+    background: rgba(232,255,107,0.06);
+    border: 1px solid rgba(232,255,107,0.2);
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin: 20px 0;
+  }
+  .highlight-box p {
+    color: var(--text);
+    font-size: 15px;
+    margin: 0;
+    font-weight: 400;
+  }
+  .highlight-box strong { color: var(--accent); }
+
+  /* Info box */
+  .info-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 20px 0;
+  }
+  .info-box p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin: 0;
+  }
+  .info-box .info-label {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+
+  /* Contact */
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .contact-card p { color: var(--text-muted); font-size: 14px; margin-bottom: 14px; }
+  .contact-email {
+    display: inline-block;
+    background: rgba(232,255,107,0.1);
+    border: 1px solid rgba(232,255,107,0.25);
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .contact-email:hover { background: rgba(232,255,107,0.18); }
+
+  /* AD SLOT */
+  .ad-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface);
+    border: 1px dashed var(--border-hover);
+    border-radius: 10px;
+    color: var(--text-dim);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    overflow: hidden;
+    position: relative;
+    margin: 40px 0;
+  }
+  .ad-slot::before {
+    content: 'Advertisement';
+    position: absolute;
+    top: 6px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .ad-inline { width: 100%; height: 90px; }
+
+  /* FOOTER */
+  footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 28px 24px;
+    font-size: 12px;
+    color: var(--text-dim);
+    border-top: 1px solid var(--border);
+  }
+  footer a { color: var(--text-muted); text-decoration: none; }
+  footer a:hover { color: var(--text); }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .toc { display: none; }
+    .page-layout { margin-top: 40px; }
+    .page-hero h1 { letter-spacing: -1px; }
+  }
+</style>
+
+<!-- ======================================================
+     ADSENSE: Replace YOUR_PUB_ID with your ca-pub-XXXXXXXX
+     ====================================================== -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUB_ID" crossorigin="anonymous"></script>
+
+<!-- ======================================================
+     MEDIA.NET: Replace YOUR_SITE_ID with your Media.net ID
+     ====================================================== -->
+<script>
+  window._mNHandle = window._mNHandle || {};
+  window._mNHandle.queue = window._mNHandle.queue || [];
+  medianet_width  = "728";
+  medianet_height = "90";
+  medianet_crid   = "YOUR_MEDIANET_CID";
+  medianet_versionId = "3111299";
+</script>
+<script src="https://contextual.media.net/dmedianet.js?cid=YOUR_SITE_ID" async="async"></script>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="index.html">Merge<span>PDF</span></a>
+  <a class="nav-back" href="index.html">← Back to Tool</a>
+</nav>
+
+<!-- AD: Leaderboard top -->
+<div class="ad-slot ad-inline" style="margin:0; border-radius:0; border-left:none; border-right:none; border-top:none;">
+  <!-- ADSENSE LEADERBOARD -->
+  <ins class="adsbygoogle"
+    style="display:inline-block;width:728px;height:90px"
+    data-ad-client="ca-pub-YOUR_PUB_ID"
+    data-ad-slot="YOUR_SLOT_ID_1">
+  </ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  <!-- MEDIA.NET LEADERBOARD (use one or the other, not both) -->
+  <!-- <div id="YOUR_MEDIANET_DIV_ID"></div> -->
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-tag">Legal</div>
+  <h1>Privacy Policy</h1>
+  <p>We built MergePDF to be private by design. Here's exactly what that means.</p>
+  <span class="last-updated">Last updated: May 1, 2026</span>
+</div>
+
+<!-- CONTENT -->
+<div class="page-layout">
+
+  <!-- Table of Contents -->
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-title">On this page</div>
+    <ul class="toc-list">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#data-collected">Data we collect</a></li>
+      <li><a href="#file-privacy">Your files</a></li>
+      <li><a href="#cookies">Cookies</a></li>
+      <li><a href="#advertising">Advertising</a></li>
+      <li><a href="#third-parties">Third parties</a></li>
+      <li><a href="#children">Children's privacy</a></li>
+      <li><a href="#your-rights">Your rights</a></li>
+      <li><a href="#changes">Policy changes</a></li>
+      <li><a href="#contact">Contact us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main content -->
+  <div class="content">
+
+    <div class="section" id="overview">
+      <div class="section-num">01</div>
+      <h2>Overview</h2>
+      <div class="highlight-box">
+        <p><strong>Short version:</strong> MergePDF runs entirely in your browser. Your PDF files are never uploaded to any server. We do not store, read, or transmit your documents — ever.</p>
+      </div>
+      <p>This Privacy Policy explains how MergePDF ("we", "us", or "our") handles information when you use our website at <strong>mergepdf.com</strong> (or wherever this site is hosted). By using our service, you agree to the practices described here.</p>
+      <p>We are committed to protecting your privacy and being fully transparent about how our service works.</p>
+    </div>
+
+    <div class="section" id="data-collected">
+      <div class="section-num">02</div>
+      <h2>Data we collect</h2>
+      <p>We collect minimal data necessary to operate the website and show relevant advertising. This may include:</p>
+      <ul>
+        <li><strong>Usage data</strong> — pages visited, time on site, browser type, operating system, and referring URL (collected automatically by our hosting provider and analytics, if enabled)</li>
+        <li><strong>IP address</strong> — used for general geographic analytics (country-level only) and fraud prevention by our ad partners</li>
+        <li><strong>Device information</strong> — screen size, browser version, and device type for optimizing the user experience</li>
+        <li><strong>Cookies and tracking pixels</strong> — set by advertising partners (see Advertising section below)</li>
+      </ul>
+      <p>We do <strong>not</strong> collect your name, email address, or any account information — there is no sign-up required to use MergePDF.</p>
+    </div>
+
+    <div class="section" id="file-privacy">
+      <div class="section-num">03</div>
+      <h2>Your files &amp; documents</h2>
+      <div class="highlight-box">
+        <p><strong>Your PDF files never leave your device.</strong> All merging is performed locally using JavaScript running inside your browser. No file data is sent to our servers or any third party.</p>
+      </div>
+      <p>This is a core design principle of MergePDF — not just a promise. Because the merging happens client-side using the open-source <strong>pdf-lib</strong> library, it is technically impossible for us to access your file contents.</p>
+      <p>Once you close your browser tab, all processed files are immediately cleared from memory. We have no copies of your documents at any point.</p>
+    </div>
+
+    <!-- AD: Mid-content inline -->
+    <div class="ad-slot ad-inline">
+      <!-- ADSENSE MID-CONTENT -->
+      <ins class="adsbygoogle"
+        style="display:inline-block;width:728px;height:90px"
+        data-ad-client="ca-pub-YOUR_PUB_ID"
+        data-ad-slot="YOUR_SLOT_ID_2">
+      </ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="section" id="cookies">
+      <div class="section-num">04</div>
+      <h2>Cookies</h2>
+      <p>We use the following types of cookies on this website:</p>
+      <ul>
+        <li><strong>Essential cookies</strong> — required for the site to function correctly. These do not track you.</li>
+        <li><strong>Analytics cookies</strong> — if analytics are enabled, these help us understand how visitors use the site (pages viewed, time spent, etc.) in aggregate, anonymized form.</li>
+        <li><strong>Advertising cookies</strong> — set by Google AdSense and Media.net to show relevant ads. These may track your browsing behavior across websites (see Advertising section).</li>
+      </ul>
+      <p>You can control or disable cookies through your browser settings. Note that disabling advertising cookies will not remove ads — it will only make them less relevant to you.</p>
+    </div>
+
+    <div class="section" id="advertising">
+      <div class="section-num">05</div>
+      <h2>Advertising</h2>
+      <p>MergePDF is free to use and is supported by advertising. We display ads through the following networks:</p>
+
+      <div class="info-box">
+        <div class="info-label">Google AdSense</div>
+        <p>Google uses cookies to serve ads based on your prior visits to this website and other sites. You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener" style="color:var(--accent)">Google's Ad Settings</a>. Google's use of advertising cookies enables it and its partners to serve ads to you based on your visit to MergePDF and/or other websites.</p>
+      </div>
+
+      <div class="info-box" style="margin-top:14px">
+        <div class="info-label">Media.net</div>
+        <p>Media.net uses contextual and behavioral data to display relevant ads. Their privacy policy is available at <a href="https://www.media.net/privacy-policy" target="_blank" rel="noopener" style="color:var(--accent)">media.net/privacy-policy</a>. You can opt out of Media.net personalized ads via their opt-out page.</p>
+      </div>
+
+      <p style="margin-top:18px">These advertising partners may collect data such as your IP address, device identifiers, and browsing behavior to serve targeted advertisements. We do not have direct access to this data.</p>
+      <p>We do not sell your personal data to advertisers or any other third parties.</p>
+    </div>
+
+    <div class="section" id="third-parties">
+      <div class="section-num">06</div>
+      <h2>Third-party services</h2>
+      <p>MergePDF uses the following third-party services, each with their own privacy policies:</p>
+      <ul>
+        <li><strong>Google Fonts</strong> — loads fonts from Google's servers. Google may log your IP address. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--accent)">Google Privacy Policy</a></li>
+        <li><strong>pdf-lib (Cloudflare CDN)</strong> — the open-source PDF library is loaded from Cloudflare's CDN. Cloudflare may log basic request data. No user content is transmitted.</li>
+        <li><strong>Google AdSense</strong> — advertising network. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--accent)">Google Privacy Policy</a></li>
+        <li><strong>Media.net</strong> — advertising network. <a href="https://www.media.net/privacy-policy" target="_blank" rel="noopener" style="color:var(--accent)">Media.net Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="section" id="children">
+      <div class="section-num">07</div>
+      <h2>Children's privacy</h2>
+      <p>MergePDF is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has provided personal information through our site, please contact us and we will promptly delete it.</p>
+    </div>
+
+    <div class="section" id="your-rights">
+      <div class="section-num">08</div>
+      <h2>Your rights</h2>
+      <p>Depending on your location, you may have the following rights regarding your personal data:</p>
+      <ul>
+        <li><strong>Right to access</strong> — request a copy of the data we hold about you</li>
+        <li><strong>Right to deletion</strong> — request that we delete your personal data</li>
+        <li><strong>Right to opt out</strong> — opt out of personalized advertising via Google and Media.net opt-out tools</li>
+        <li><strong>GDPR (EU users)</strong> — you have rights under the General Data Protection Regulation including the right to data portability and the right to lodge a complaint with a supervisory authority</li>
+        <li><strong>CCPA (California users)</strong> — you have the right to know what data is collected and to opt out of the sale of personal information</li>
+      </ul>
+      <p>To exercise these rights, contact us at the email below.</p>
+    </div>
+
+    <div class="section" id="changes">
+      <div class="section-num">09</div>
+      <h2>Policy changes</h2>
+      <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last updated" date at the top of this page. We encourage you to review this policy periodically. Continued use of MergePDF after changes constitutes your acceptance of the updated policy.</p>
+    </div>
+
+    <div class="section" id="contact">
+      <div class="section-num">10</div>
+      <h2>Contact us</h2>
+      <p>If you have any questions, concerns, or requests regarding this Privacy Policy, please reach out:</p>
+      <div class="contact-card">
+        <p>We typically respond within 2–3 business days.</p>
+        <!-- Replace with your real email address -->
+        <a class="contact-email" href="mailto:privacy@mergepdf.com">privacy@mergepdf.com</a>
+      </div>
+    </div>
+
+  </div><!-- end .content -->
+</div><!-- end .page-layout -->
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 MergePDF &mdash; <a href="index.html">Home</a> &middot; <a href="privacy-policy.html">Privacy Policy</a></p>
+  <p style="margin-top:8px;">Powered by <a href="https://pdf-lib.js.org/" target="_blank" rel="noopener">pdf-lib</a></p>
+</footer>
+
+</body>
+</html>
