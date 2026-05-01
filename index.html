@@ -7,17 +7,15 @@
 <meta name="description" content="Merge PDF files for free, instantly, in your browser. No uploads, no signup, no watermarks. 100% private." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
 <!-- ============================================================
      GOOGLE ADSENSE — Replace YOUR_PUB_ID with ca-pub-XXXXXXXX
-     Get your Publisher ID from: adsense.google.com
      ============================================================ -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUB_ID" crossorigin="anonymous"></script>
 
 <!-- ============================================================
      MEDIA.NET — Replace YOUR_SITE_ID and YOUR_MEDIANET_CID
-     Get your IDs from: media.net after account approval
      ============================================================ -->
 <script>
   window._mNHandle = window._mNHandle || {};
@@ -28,685 +26,1168 @@
   medianet_versionId = "3111299";
 </script>
 <script src="https://contextual.media.net/dmedianet.js?cid=YOUR_SITE_ID" async="async"></script>
+
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --bg: #0d0d0d;
-    --surface: #161616;
-    --surface2: #1e1e1e;
-    --border: rgba(255,255,255,0.08);
-    --border-hover: rgba(255,255,255,0.18);
-    --accent: #e8ff6b;
-    --accent-dark: #c2d84d;
-    --text: #f0ede8;
-    --text-muted: #888;
-    --text-dim: #555;
-    --red: #ff5c5c;
-    --success: #6bffb8;
-    --radius: 16px;
-  }
+:root {
+  --bg: #0f0810;
+  --bg2: #150c16;
+  --surface: #1a0e1b;
+  --surface2: #221526;
+  --surface3: #2b1b2f;
+  --border: rgba(255,180,200,0.07);
+  --border-hover: rgba(255,180,200,0.18);
+  --border-accent: rgba(255,160,140,0.38);
+  --gold: #ffb8a0;
+  --gold-dim: #e8836a;
+  --gold-glow: rgba(255,140,120,0.13);
+  --text: #f5eef0;
+  --text-muted: #7a6068;
+  --text-mid: #a8909a;
+  --red: #ff5c5c;
+  --green: #ff9eb5;
+  --radius: 14px;
+  --radius-sm: 8px;
+}
 
-  html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+body {
+  font-family: 'Geist', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
 
-  /* ── NAV ── */
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 40px;
-    border-bottom: 1px solid var(--border);
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(13,13,13,0.92);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-  }
-  .logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 22px;
-    letter-spacing: -0.5px;
-    text-decoration: none;
-    color: var(--text);
-  }
-  .logo span { color: var(--accent); }
-  .nav-badge {
-    font-size: 11px;
-    font-weight: 500;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    padding: 5px 12px;
-    border-radius: 99px;
-    color: var(--text-muted);
-  }
+/* ── NOISE TEXTURE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.6;
+}
 
-  /* ── HERO ── */
-  .hero {
-    text-align: center;
-    padding: 88px 24px 56px;
-  }
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    background: rgba(232,255,107,0.1);
-    border: 1px solid rgba(232,255,107,0.28);
-    color: var(--accent);
-    font-size: 12px;
-    font-weight: 500;
-    padding: 5px 14px;
-    border-radius: 99px;
-    margin-bottom: 28px;
-    letter-spacing: 0.4px;
-  }
-  .hero-badge::before {
-    content: '';
-    width: 7px; height: 7px;
-    background: var(--accent);
-    border-radius: 50%;
-    display: inline-block;
-  }
-  h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(42px, 7vw, 76px);
-    font-weight: 800;
-    line-height: 1.04;
-    letter-spacing: -2.5px;
-    margin-bottom: 20px;
-  }
-  h1 em { color: var(--accent); font-style: normal; }
-  .hero-sub {
-    color: var(--text-muted);
-    font-size: 17px;
-    font-weight: 300;
-    max-width: 500px;
-    margin: 0 auto;
-    line-height: 1.75;
-  }
+/* ── AMBIENT GLOW ── */
+.bg-glow {
+  position: fixed;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,100,140,0.06) 0%, transparent 70%);
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+}
 
-  /* ── MAIN ── */
-  .main {
-    max-width: 840px;
-    margin: 0 auto;
-    padding: 0 24px 100px;
-    width: 100%;
-  }
+/* ── NAV ── */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(15,8,16,0.88);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
 
-  /* ── DROP ZONE ── */
-  .drop-zone {
-    border: 2px dashed var(--border-hover);
-    border-radius: var(--radius);
-    padding: 60px 32px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    background: var(--surface);
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 36px;
-  }
-  .drop-zone::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% -10%, rgba(232,255,107,0.06) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  .drop-zone:hover,
-  .drop-zone.drag-over {
-    border-color: var(--accent);
-    background: rgba(232,255,107,0.04);
-  }
-  .drop-zone.drag-over::before {
-    background: radial-gradient(ellipse at 50% 0%, rgba(232,255,107,0.1) 0%, transparent 65%);
-  }
-  .drop-icon {
-    width: 60px; height: 60px;
-    background: rgba(232,255,107,0.12);
-    border-radius: 16px;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 22px;
-    font-size: 28px;
-  }
-  .drop-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 22px;
-    margin-bottom: 8px;
-  }
-  .drop-sub {
-    color: var(--text-muted);
-    font-size: 14px;
-    margin-bottom: 22px;
-  }
-  .btn-browse {
-    background: var(--accent);
-    color: #0d0d0d;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    padding: 11px 24px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.15s, transform 0.1s;
-  }
-  .btn-browse:hover { background: var(--accent-dark); }
-  .btn-browse:active { transform: scale(0.97); }
-  #file-input { display: none; }
+.logo {
+  font-family: 'Geist', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-  /* ── FILE LIST ── */
-  .section-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 14px;
-  }
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    letter-spacing: -0.2px;
-  }
-  .file-count {
-    font-size: 12px;
-    color: var(--text-muted);
-    background: var(--surface2);
-    padding: 3px 10px;
-    border-radius: 99px;
-    border: 1px solid var(--border);
-  }
-  .hint {
-    font-size: 12px;
-    color: var(--text-dim);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .file-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 28px;
-  }
-  .file-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 16px;
-    cursor: grab;
-    transition: border-color 0.15s, background 0.15s, transform 0.15s;
-    user-select: none;
-  }
-  .file-item:hover { border-color: var(--border-hover); }
-  .file-item.dragging { opacity: 0.35; border-style: dashed; cursor: grabbing; }
-  .file-item.drag-target { border-color: var(--accent); background: rgba(232,255,107,0.05); transform: scale(1.01); }
-  .drag-handle {
-    color: var(--text-dim);
-    font-size: 20px;
-    cursor: grab;
-    flex-shrink: 0;
-    line-height: 1;
-    padding: 4px 2px;
-  }
-  .order-badge {
-    width: 24px; height: 24px;
-    background: var(--surface2);
-    border-radius: 7px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-muted);
-    flex-shrink: 0;
-    border: 1px solid var(--border);
-  }
-  .file-icon {
-    width: 40px; height: 40px;
-    background: rgba(232,255,107,0.1);
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-  }
-  .file-info { flex: 1; min-width: 0; }
-  .file-name {
-    font-weight: 500;
-    font-size: 14px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .file-meta {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-top: 3px;
-  }
-  .btn-remove {
-    background: none;
-    border: none;
-    color: var(--text-dim);
-    font-size: 18px;
-    cursor: pointer;
-    padding: 5px 7px;
-    border-radius: 7px;
-    transition: color 0.15s, background 0.15s;
-    line-height: 1;
-    flex-shrink: 0;
-  }
-  .btn-remove:hover { color: var(--red); background: rgba(255,92,92,0.1); }
+.logo-icon {
+  width: 30px;
+  height: 30px;
+  background: var(--gold);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  /* ── ADD MORE ── */
-  .btn-add-more {
-    width: 100%;
-    background: none;
-    border: 1px dashed var(--border-hover);
-    border-radius: 10px;
-    padding: 12px;
-    color: var(--text-muted);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.15s;
-    margin-bottom: 28px;
-  }
-  .btn-add-more:hover { border-color: var(--accent); color: var(--accent); background: rgba(232,255,107,0.04); }
+.logo-icon svg { display: block; }
 
-  /* ── OUTPUT NAME ── */
-  .output-row {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  .output-label {
-    font-size: 13px;
-    color: var(--text-muted);
-    white-space: nowrap;
-    font-weight: 500;
-  }
-  .output-input {
-    flex: 1;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 14px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    color: var(--text);
-    outline: none;
-    transition: border-color 0.15s;
-  }
-  .output-input:focus { border-color: var(--accent); }
-  .output-ext {
-    font-size: 13px;
-    color: var(--text-muted);
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 14px;
-    font-weight: 500;
-  }
+.logo-name em {
+  font-style: normal;
+  color: var(--gold);
+}
 
-  /* ── MERGE BTN ── */
-  .btn-merge {
-    width: 100%;
-    background: var(--accent);
-    color: #0d0d0d;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 17px;
-    letter-spacing: -0.3px;
-    padding: 20px;
-    border-radius: 14px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
-  .btn-merge:hover:not(:disabled) { background: var(--accent-dark); transform: translateY(-1px); }
-  .btn-merge:active:not(:disabled) { transform: translateY(0); }
-  .btn-merge:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-  /* ── PROGRESS ── */
-  .progress-wrap {
-    margin-top: 24px;
-    display: none;
-  }
-  .progress-bar-bg {
-    width: 100%;
-    height: 4px;
-    background: var(--surface2);
-    border-radius: 99px;
-    overflow: hidden;
-    margin-bottom: 10px;
-  }
-  .progress-bar {
-    height: 100%;
-    background: var(--accent);
-    border-radius: 99px;
-    transition: width 0.35s ease;
-    width: 0%;
-  }
-  .progress-label {
-    font-size: 13px;
-    color: var(--text-muted);
-    text-align: center;
-  }
+.nav-pill {
+  font-size: 11px;
+  font-weight: 500;
+  font-family: 'DM Mono', monospace;
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 5px 13px;
+  border-radius: 99px;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+}
 
-  /* ── SUCCESS ── */
-  .success-box {
-    margin-top: 28px;
-    background: rgba(107,255,184,0.05);
-    border: 1px solid rgba(107,255,184,0.22);
-    border-radius: 16px;
-    padding: 28px;
-    text-align: center;
-    display: none;
-  }
-  .success-icon { font-size: 40px; margin-bottom: 14px; }
-  .success-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    color: var(--success);
-    margin-bottom: 7px;
-  }
-  .success-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; }
-  .btn-download {
-    display: inline-block;
-    background: var(--success);
-    color: #0d0d0d;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-    font-size: 15px;
-    padding: 13px 30px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    transition: opacity 0.15s, transform 0.1s;
-  }
-  .btn-download:hover { opacity: 0.88; }
-  .btn-download:active { transform: scale(0.97); }
+.nav-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+  box-shadow: 0 0 6px var(--gold);
+  animation: pulse 2.5s ease-in-out infinite;
+}
 
-  /* ── ERROR ── */
-  .error-box {
-    margin-top: 20px;
-    background: rgba(255,92,92,0.08);
-    border: 1px solid rgba(255,92,92,0.25);
-    border-radius: 12px;
-    padding: 16px 20px;
-    font-size: 14px;
-    color: #ff8f8f;
-    display: none;
-  }
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
 
-  /* ── FEATURES ── */
-  .features-section { margin-top: 80px; }
-  .features-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--text-dim);
-    text-align: center;
-    margin-bottom: 24px;
-  }
-  .features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 14px;
-  }
-  .feature-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 22px 20px;
-    transition: border-color 0.2s;
-  }
-  .feature-card:hover { border-color: var(--border-hover); }
-  .feature-icon { font-size: 24px; margin-bottom: 14px; }
-  .feature-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    margin-bottom: 7px;
-  }
-  .feature-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+/* ── AD LEADERBOARD ── */
+.ad-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1px dashed rgba(255,255,255,0.05);
+  border-radius: 10px;
+  color: var(--text-muted);
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  overflow: hidden;
+  position: relative;
+}
+.ad-slot::before {
+  content: 'Advertisement';
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  opacity: 0.5;
+  white-space: nowrap;
+}
+.ad-leaderboard {
+  width: 100%;
+  height: 90px;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+.ad-inline {
+  width: 100%;
+  height: 90px;
+  margin: 44px 0;
+}
+.ad-rectangle {
+  width: 100%;
+  max-width: 468px;
+  height: 120px;
+  margin: 32px auto 0;
+}
+.ad-skyscraper { width: 160px; height: 600px; }
+.ad-sidebar-sq { width: 160px; height: 160px; }
 
-  /* ── HOW IT WORKS ── */
-  .how-section {
-    margin-top: 80px;
-    text-align: center;
-  }
-  .how-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 32px;
-    letter-spacing: -1px;
-    margin-bottom: 40px;
-  }
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 0;
-    position: relative;
-  }
-  .step {
-    padding: 0 16px;
-    position: relative;
-  }
-  .step:not(:last-child)::after {
-    content: '→';
-    position: absolute;
-    right: -8px;
-    top: 20px;
-    color: var(--text-dim);
-    font-size: 18px;
-  }
-  .step-num {
-    width: 42px; height: 42px;
-    border-radius: 50%;
-    background: rgba(232,255,107,0.12);
-    border: 1px solid rgba(232,255,107,0.25);
-    color: var(--accent);
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 16px;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 14px;
-  }
-  .step-label {
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.5;
-  }
-  .step-label strong {
-    display: block;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
+/* ── HERO ── */
+.hero {
+  text-align: center;
+  padding: 96px 24px 64px;
+  position: relative;
+  z-index: 1;
+}
 
-  /* ── FOOTER ── */
-  footer {
-    margin-top: auto;
-    text-align: center;
-    padding: 32px 24px;
-    font-size: 12px;
-    color: var(--text-dim);
-    border-top: 1px solid var(--border);
-  }
-  footer a { color: var(--text-muted); text-decoration: none; }
-  footer a:hover { color: var(--text); }
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,120,140,0.08);
+  border: 1px solid rgba(255,140,130,0.22);
+  color: var(--gold);
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+  padding: 6px 16px;
+  border-radius: 99px;
+  margin-bottom: 36px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
 
-  /* ── SPINNER ── */
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .spinner {
-    width: 18px; height: 18px;
-    border: 2px solid rgba(13,13,13,0.25);
-    border-top-color: #0d0d0d;
-    border-radius: 50%;
-    animation: spin 0.65s linear infinite;
-    flex-shrink: 0;
-  }
+.hero-eyebrow::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
 
-  /* ── ADS ── */
-  .ad-slot {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--surface);
-    border: 1px dashed var(--border-hover);
-    border-radius: 10px;
-    color: var(--text-dim);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    overflow: hidden;
-    position: relative;
-  }
-  .ad-slot::before {
-    content: 'Advertisement';
-    position: absolute;
-    top: 6px; left: 50%;
-    transform: translateX(-50%);
-    font-size: 9px;
-    letter-spacing: 1px;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
+h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(52px, 8vw, 96px);
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -3px;
+  margin-bottom: 10px;
+  color: var(--text);
+}
 
-  /* Leaderboard — 728×90 below nav */
-  .ad-leaderboard {
-    width: 100%;
-    height: 90px;
-    border-radius: 0;
-    border-left: none; border-right: none; border-top: none;
-  }
+h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
 
-  /* Inline rectangle — 728×90 between sections */
-  .ad-inline {
-    width: 100%;
-    height: 90px;
-    margin: 40px 0;
-  }
+h1 .thin {
+  font-weight: 300;
+  opacity: 0.55;
+}
 
-  /* Inline rectangle tall — 300×250 after success */
-  .ad-rectangle {
-    width: 100%;
-    max-width: 468px;
-    height: 120px;
-    margin: 28px auto 0;
-  }
+.hero-sub {
+  color: var(--text-muted);
+  font-size: 15px;
+  font-weight: 400;
+  max-width: 440px;
+  margin: 24px auto 0;
+  line-height: 1.75;
+}
 
-  /* Page layout: sidebar on wide screens */
-  .page-layout {
-    display: flex;
-    gap: 28px;
-    align-items: flex-start;
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 0 24px;
-    width: 100%;
-  }
-  .page-layout .main {
-    flex: 1;
-    min-width: 0;
-    max-width: 840px;
-    margin: 0;
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .ad-sidebar-col {
-    width: 160px;
-    flex-shrink: 0;
-    position: sticky;
-    top: 90px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .ad-skyscraper {
-    width: 160px;
-    height: 600px;
-  }
-  .ad-sidebar-sq {
-    width: 160px;
-    height: 160px;
-  }
+.hero-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 40px;
+}
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 1060px) {
-    .ad-sidebar-col { display: none; }
-    .page-layout { max-width: 840px; padding: 0 24px; }
-  }
-  @media (max-width: 600px) {
-    nav { padding: 16px 20px; }
-    .nav-badge { display: none; }
-    .hero { padding: 56px 20px 40px; }
-    .step:not(:last-child)::after { display: none; }
-    .steps { gap: 20px; }
-    .ad-leaderboard { height: 60px; }
-  }
+.hero-stat {
+  text-align: center;
+}
+
+.hero-stat-num {
+  font-family: 'Instrument Serif', serif;
+  font-size: 28px;
+  color: var(--text);
+  line-height: 1;
+}
+
+.hero-stat-label {
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  color: var(--text-muted);
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.hero-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--border);
+}
+
+/* ── PAGE LAYOUT ── */
+.page-layout {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.page-layout .main {
+  flex: 1;
+  min-width: 0;
+  max-width: 860px;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.ad-sidebar-col {
+  width: 160px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── MAIN ── */
+.main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 120px;
+  width: 100%;
+}
+
+/* ── DROP ZONE ── */
+.drop-zone {
+  border: 1px solid var(--border-hover);
+  border-radius: 20px;
+  padding: 72px 32px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--surface);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.drop-zone::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% -20%, var(--gold-glow) 0%, transparent 70%);
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.drop-zone::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: 19px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.drop-zone:hover,
+.drop-zone.drag-over {
+  border-color: var(--border-accent);
+  background: rgba(255,100,140,0.04);
+  transform: translateY(-1px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,130,110,0.11);
+}
+
+.drop-zone.drag-over::before {
+  background: radial-gradient(ellipse at 50% 0%, rgba(255,140,120,0.16) 0%, transparent 65%);
+}
+
+.drop-icon-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 28px;
+}
+
+.drop-icon-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: rgba(255,130,110,0.09);
+  border: 1px solid rgba(255,130,110,0.18);
+}
+
+.drop-icon-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.drop-title {
+  font-family: 'Geist', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.drop-sub {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.btn-browse {
+  background: var(--gold);
+  color: #1a0810;
+  font-family: 'Geist', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 11px 26px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  letter-spacing: -0.2px;
+  position: relative;
+  z-index: 2;
+}
+
+.btn-browse:hover {
+  background: #ffe480;
+  box-shadow: 0 6px 20px rgba(255,140,120,0.32);
+  transform: translateY(-1px);
+}
+
+.btn-browse:active { transform: scale(0.97) translateY(0); }
+
+#file-input { display: none; }
+
+/* ── FILE LIST ── */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding: 0 2px;
+}
+
+.section-title {
+  font-family: 'Geist', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text-mid);
+  letter-spacing: -0.1px;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.8px;
+}
+
+.file-count {
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  color: var(--gold);
+  background: rgba(255,130,110,0.09);
+  padding: 3px 10px;
+  border-radius: 99px;
+  border: 1px solid rgba(255,130,110,0.2);
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: 'DM Mono', monospace;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.7;
+}
+
+.file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 13px 15px;
+  cursor: grab;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  position: relative;
+}
+
+.file-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 0;
+  background: var(--gold);
+  border-radius: 0 2px 2px 0;
+  transition: height 0.2s ease;
+}
+
+.file-item:hover {
+  border-color: var(--border-hover);
+  background: var(--surface2);
+}
+
+.file-item:hover::before { height: 50%; }
+
+.file-item.dragging {
+  opacity: 0.3;
+  border-style: dashed;
+  cursor: grabbing;
+}
+
+.file-item.drag-target {
+  border-color: rgba(255,160,140,0.42);
+  background: rgba(255,100,140,0.05);
+  transform: scale(1.005);
+}
+
+.drag-handle {
+  color: var(--text-muted);
+  font-size: 16px;
+  cursor: grab;
+  flex-shrink: 0;
+  opacity: 0.4;
+  transition: opacity 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px 3px;
+}
+
+.drag-handle span {
+  display: block;
+  width: 14px;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 2px;
+}
+
+.file-item:hover .drag-handle { opacity: 0.8; }
+
+.order-badge {
+  width: 22px;
+  height: 22px;
+  background: var(--surface3);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  font-family: 'DM Mono', monospace;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+
+.file-icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(255,130,110,0.09);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(255,130,110,0.13);
+}
+
+.file-icon svg { display: block; }
+
+.file-info { flex: 1; min-width: 0; }
+
+.file-name {
+  font-weight: 500;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text);
+  letter-spacing: -0.2px;
+}
+
+.file-meta {
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.btn-remove {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 5px 7px;
+  border-radius: 6px;
+  transition: all 0.15s;
+  line-height: 1;
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+
+.btn-remove:hover {
+  color: var(--red);
+  background: rgba(255,92,92,0.08);
+  opacity: 1;
+}
+
+/* ── ADD MORE ── */
+.btn-add-more {
+  width: 100%;
+  background: none;
+  border: 1px dashed rgba(255,255,255,0.08);
+  border-radius: var(--radius-sm);
+  padding: 11px;
+  color: var(--text-muted);
+  font-family: 'Geist', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+  margin-bottom: 24px;
+  letter-spacing: -0.1px;
+}
+
+.btn-add-more:hover {
+  border-color: rgba(255,140,120,0.32);
+  color: var(--gold);
+  background: rgba(255,100,140,0.04);
+}
+
+/* ── OUTPUT ROW ── */
+.output-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 4px 4px 4px 16px;
+}
+
+.output-label {
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  color: var(--text-muted);
+  white-space: nowrap;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.output-input {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 12px 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+}
+
+.output-ext {
+  font-size: 12px;
+  font-family: 'DM Mono', monospace;
+  color: var(--gold);
+  background: rgba(255,130,110,0.09);
+  border: 1px solid rgba(255,130,110,0.18);
+  border-radius: 8px;
+  padding: 9px 14px;
+  font-weight: 500;
+}
+
+/* ── MERGE BTN ── */
+.btn-merge {
+  width: 100%;
+  background: var(--gold);
+  color: #1a0810;
+  font-family: 'Geist', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.3px;
+  padding: 20px;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-merge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 100%);
+}
+
+.btn-merge:hover:not(:disabled) {
+  background: #ffe480;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(255,140,120,0.38);
+}
+
+.btn-merge:active:not(:disabled) { transform: translateY(0); box-shadow: none; }
+.btn-merge:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+/* ── PROGRESS ── */
+.progress-wrap { margin-top: 22px; display: none; }
+
+.progress-track {
+  width: 100%;
+  height: 2px;
+  background: var(--surface3);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+  border-radius: 99px;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 0%;
+  position: relative;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255,184,160,0.7);
+}
+
+.progress-label {
+  font-size: 12px;
+  font-family: 'DM Mono', monospace;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ── SUCCESS ── */
+.success-box {
+  margin-top: 24px;
+  background: rgba(255,140,170,0.05);
+  border: 1px solid rgba(255,140,170,0.2);
+  border-radius: 18px;
+  padding: 36px 28px;
+  text-align: center;
+  display: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.success-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% -20%, rgba(255,140,170,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.success-checkmark {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255,140,170,0.11);
+  border: 1px solid rgba(255,140,170,0.26);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.success-title {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  font-size: 26px;
+  letter-spacing: -1px;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.success-sub {
+  font-size: 13px;
+  font-family: 'DM Mono', monospace;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold);
+  color: #1a0810;
+  font-family: 'Geist', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 13px 28px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  letter-spacing: -0.2px;
+}
+
+.btn-download:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(255,140,170,0.26);
+}
+
+/* ── ERROR ── */
+.error-box {
+  margin-top: 16px;
+  background: rgba(255,92,92,0.06);
+  border: 1px solid rgba(255,92,92,0.2);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  font-size: 13px;
+  font-family: 'DM Mono', monospace;
+  color: #ff8f8f;
+  display: none;
+}
+
+/* ── SPINNER ── */
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(17,17,17,0.2);
+  border-top-color: #1a0810;
+  border-radius: 50%;
+  animation: spin 0.65s linear infinite;
+  flex-shrink: 0;
+}
+
+/* ── DIVIDER ── */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 64px 0 48px;
+}
+
+.section-divider-line { flex: 1; height: 1px; background: var(--border); }
+
+.section-divider-text {
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  color: var(--text-muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ── FEATURES ── */
+.features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.feature-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 22px;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,160,180,0.025) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.feature-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+}
+
+.feature-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+  opacity: 0.7;
+}
+
+.feature-title {
+  font-family: 'Geist', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.3px;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.feature-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* ── HOW IT WORKS ── */
+.how-section { text-align: center; }
+
+.how-title {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  font-size: 40px;
+  letter-spacing: -2px;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.how-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 48px;
+  font-family: 'DM Mono', monospace;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 22px;
+  left: calc(12.5% + 12px);
+  right: calc(12.5% + 12px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent);
+}
+
+.step {
+  padding: 0 12px;
+  position: relative;
+}
+
+.step-num {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--gold);
+  font-family: 'Instrument Serif', serif;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.step-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.step-label strong {
+  display: block;
+  font-family: 'Geist', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 5px;
+  letter-spacing: -0.2px;
+}
+
+/* ── FOOTER ── */
+footer {
+  margin-top: auto;
+  padding: 28px 40px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 12px;
+  font-family: 'DM Mono', monospace;
+  color: var(--text-muted);
+  position: relative;
+  z-index: 1;
+}
+
+footer a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+footer a:hover { color: var(--gold); }
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 840px;
+  margin: 0 auto;
+  gap: 24px;
+}
+
+.footer-copy { opacity: 0.6; }
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.footer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255,140,170,0.07);
+  border: 1px solid rgba(255,140,170,0.13);
+  padding: 4px 10px;
+  border-radius: 99px;
+  color: var(--gold);
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1060px) {
+  .ad-sidebar-col { display: none; }
+  .page-layout { max-width: 860px; }
+}
+
+@media (max-width: 700px) {
+  nav { padding: 14px 20px; }
+  .nav-pill { display: none; }
+  .hero { padding: 64px 20px 40px; }
+  h1 { letter-spacing: -2px; }
+  .features { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .steps::before { display: none; }
+  .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+  .ad-leaderboard { height: 60px; }
+}
+
+@media (max-width: 480px) {
+  .steps { grid-template-columns: 1fr; }
+  .hero-stats { gap: 20px; }
+}
+
+/* ── ENTRY ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-eyebrow { animation: fadeUp 0.5s ease both; }
+h1 { animation: fadeUp 0.5s ease 0.07s both; }
+.hero-sub { animation: fadeUp 0.5s ease 0.14s both; }
+.hero-stats { animation: fadeUp 0.5s ease 0.21s both; }
+.drop-zone { animation: fadeUp 0.5s ease 0.28s both; }
 </style>
 </head>
 <body>
 
+<div class="bg-glow"></div>
+
 <!-- NAV -->
 <nav>
-  <a class="logo" href="#">Merge<span>PDF</span></a>
-  <div class="nav-badge">100% Free &middot; No signup &middot; Files stay local</div>
+  <a class="logo" href="#">
+    <div class="logo-icon">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 2h7l3 3v9H3V2Z" fill="#111" stroke="#111"/>
+        <path d="M10 2v3h3" fill="none" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+        <path d="M5 8h6M5 11h4" stroke="#ffb8a0" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <span class="logo-name">Merge<em>PDF</em></span>
+  </a>
+  <div class="nav-right">
+    <div class="nav-pill"><span class="nav-dot"></span>Private &amp; Local</div>
+    <div class="nav-pill">No signup</div>
+  </div>
 </nav>
 
-<!-- AD: Leaderboard 728×90 — Top of page -->
+<!-- AD: Leaderboard -->
 <div class="ad-slot ad-leaderboard" id="ad-leaderboard">
-  <!-- OPTION A: Google AdSense (replace YOUR_PUB_ID and YOUR_SLOT_ID_1) -->
   <ins class="adsbygoogle"
     style="display:inline-block;width:728px;height:90px"
     data-ad-client="ca-pub-YOUR_PUB_ID"
     data-ad-slot="YOUR_SLOT_ID_1">
   </ins>
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  <!-- OPTION B: Media.net (comment out AdSense above and uncomment below) -->
-  <!-- <div id="YOUR_MEDIANET_DIV_LEADERBOARD" style="width:728px;height:90px;"></div> -->
 </div>
 
 <!-- HERO -->
 <header class="hero">
-  <div class="hero-badge">Browser-based &mdash; nothing ever uploaded</div>
-  <h1>Merge PDFs<br><em>instantly</em>, free</h1>
+  <div class="hero-eyebrow">Browser-based — nothing ever uploaded</div>
+  <h1>Merge<br><em>PDFs</em> <span class="thin">free</span></h1>
   <p class="hero-sub">Combine multiple PDF files into one in seconds. Drag to reorder. No limits, no watermarks, no data collected — ever.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">∞</div>
+      <div class="hero-stat-label">No limits</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">0</div>
+      <div class="hero-stat-label">Data uploaded</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">100%</div>
+      <div class="hero-stat-label">Free forever</div>
+    </div>
+  </div>
 </header>
 
-<!-- MAIN TOOL — wrapped in page layout for sidebar ads -->
+<!-- PAGE LAYOUT with sidebars -->
 <div class="page-layout">
 
-<!-- AD: Sidebar skyscraper (left) -->
+<!-- Left sidebar ad -->
 <aside class="ad-sidebar-col" style="order:-1">
   <div class="ad-slot ad-skyscraper" id="ad-sidebar-left">
-    <!-- AdSense Sidebar Left (160×600) -->
     <ins class="adsbygoogle"
       style="display:inline-block;width:160px;height:600px"
       data-ad-client="ca-pub-YOUR_PUB_ID"
@@ -720,14 +1201,22 @@
 
   <!-- Drop zone -->
   <div class="drop-zone" id="drop-zone">
-    <div class="drop-icon">📄</div>
-    <div class="drop-title">Drop PDF files here</div>
-    <div class="drop-sub">or click to browse from your device</div>
+    <div class="drop-icon-wrap">
+      <div class="drop-icon-ring"></div>
+      <div class="drop-icon-inner">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+          <path d="M15 20V10M15 10L11 14M15 10L19 14" stroke="#ffb8a0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 22h14" stroke="#ffb8a0" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+        </svg>
+      </div>
+    </div>
+    <div class="drop-title">Drop your PDF files here</div>
+    <div class="drop-sub">Or click to browse files from your device<br>All processing happens locally in your browser</div>
     <button class="btn-browse" type="button" onclick="document.getElementById('file-input').click()">Choose Files</button>
     <input type="file" id="file-input" accept=".pdf,application/pdf" multiple />
   </div>
 
-  <!-- File list (shown after files are added) -->
+  <!-- File list -->
   <div id="files-section" style="display:none">
 
     <div class="section-header">
@@ -736,7 +1225,7 @@
     </div>
 
     <div class="hint">
-      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
         <path d="M8 1v6M8 10v.5M15 8A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
       Drag rows to reorder — the merged PDF will follow this sequence
@@ -749,7 +1238,7 @@
     </button>
 
     <div class="output-row">
-      <span class="output-label">Output filename</span>
+      <span class="output-label">Filename</span>
       <input class="output-input" type="text" id="output-name" value="merged" placeholder="merged" />
       <span class="output-ext">.pdf</span>
     </div>
@@ -761,22 +1250,30 @@
     <div class="error-box" id="error-box"></div>
 
     <div class="progress-wrap" id="progress-wrap">
-      <div class="progress-bar-bg"><div class="progress-bar" id="progress-bar"></div></div>
+      <div class="progress-track"><div class="progress-bar" id="progress-bar"></div></div>
       <div class="progress-label" id="progress-label">Processing...</div>
     </div>
 
     <div class="success-box" id="success-box">
-      <div class="success-icon">✅</div>
-      <div class="success-title">Merged successfully!</div>
+      <div class="success-checkmark">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M5 12l4 4L19 8" stroke="#ffb8a0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="success-title">Merged successfully</div>
       <div class="success-sub" id="success-info">Your merged PDF is ready.</div>
-      <a class="btn-download" id="btn-download" href="#">⬇ Download PDF</a>
+      <a class="btn-download" id="btn-download" href="#">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M7 1v8M7 9L4 6M7 9l3-3M1 11h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Download PDF
+      </a>
     </div>
 
   </div>
 
-  <!-- AD: Rectangle after merge tool (468×120) -->
+  <!-- Ad after tool -->
   <div class="ad-slot ad-rectangle" id="ad-after-merge">
-    <!-- AdSense Rectangle (use responsive or fixed size) -->
     <ins class="adsbygoogle"
       style="display:inline-block;width:468px;height:60px"
       data-ad-client="ca-pub-YOUR_PUB_ID"
@@ -786,52 +1283,53 @@
   </div>
 
   <!-- Features -->
-  <div class="features-section">
-    <div class="features-title">Why MergePDF</div>
-    <div class="features">
-      <div class="feature-card">
-        <div class="feature-icon">🔒</div>
-        <div class="feature-title">100% private</div>
-        <div class="feature-desc">Files never leave your device. Everything runs locally in your browser — zero server contact.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">⚡</div>
-        <div class="feature-title">Lightning fast</div>
-        <div class="feature-desc">No upload wait times. Merging is instant because it all happens right on your machine.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">♾️</div>
-        <div class="feature-title">No limits</div>
-        <div class="feature-desc">Merge as many PDFs as you need. No file size caps, no page limits, no watermarks.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🖱️</div>
-        <div class="feature-title">Drag to reorder</div>
-        <div class="feature-desc">Arrange your files in any order before merging with simple drag and drop.</div>
-      </div>
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <div class="section-divider-text">Why MergePDF</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-num">01</div>
+      <div class="feature-title">100% private</div>
+      <div class="feature-desc">Files never leave your device. Everything runs locally in your browser — zero server contact, zero exposure.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">02</div>
+      <div class="feature-title">Lightning fast</div>
+      <div class="feature-desc">No upload wait times. Merging is instant because it all happens right on your machine.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">03</div>
+      <div class="feature-title">No limits</div>
+      <div class="feature-desc">Merge as many PDFs as you need. No file size caps, no page limits, no watermarks — ever.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">04</div>
+      <div class="feature-title">Drag to reorder</div>
+      <div class="feature-desc">Arrange your files in any sequence before merging with simple drag and drop controls.</div>
     </div>
   </div>
 
-  <!-- AD: Inline between Features and How It Works (728×90) -->
+  <!-- Mid ad -->
   <div class="ad-slot ad-inline" id="ad-inline-mid">
-    <!-- OPTION A: AdSense -->
     <ins class="adsbygoogle"
       style="display:inline-block;width:728px;height:90px"
       data-ad-client="ca-pub-YOUR_PUB_ID"
       data-ad-slot="YOUR_SLOT_ID_5">
     </ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <!-- OPTION B: Media.net (comment out AdSense and uncomment below) -->
-    <!-- <div id="YOUR_MEDIANET_DIV_INLINE" style="width:728px;height:90px;"></div> -->
   </div>
 
   <!-- How it works -->
   <div class="how-section">
     <div class="how-title">How it works</div>
+    <div class="how-subtitle">Four steps, zero friction</div>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
-        <div class="step-label"><strong>Upload PDFs</strong>Drag & drop or browse to select your files</div>
+        <div class="step-label"><strong>Upload PDFs</strong>Drag &amp; drop or browse to select your files</div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
@@ -850,10 +1348,9 @@
 
 </main>
 
-<!-- AD: Sidebar (right) -->
+<!-- Right sidebar ad -->
 <aside class="ad-sidebar-col">
   <div class="ad-slot ad-skyscraper" id="ad-sidebar-right">
-    <!-- AdSense Right Skyscraper (160×600) -->
     <ins class="adsbygoogle"
       style="display:inline-block;width:160px;height:600px"
       data-ad-client="ca-pub-YOUR_PUB_ID"
@@ -862,7 +1359,6 @@
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
   <div class="ad-slot ad-sidebar-sq" id="ad-sidebar-sq">
-    <!-- AdSense Square (160×160) -->
     <ins class="adsbygoogle"
       style="display:inline-block;width:160px;height:160px"
       data-ad-client="ca-pub-YOUR_PUB_ID"
@@ -876,11 +1372,17 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>&copy; 2026 MergePDF &mdash; Your files always stay on your computer. Always free, always private.</p>
-  <p style="margin-top:8px;">
-    <a href="privacy-policy.html">Privacy Policy</a> &middot;
-    Powered by <a href="https://pdf-lib.js.org/" target="_blank" rel="noopener">pdf-lib</a>
-  </p>
+  <div class="footer-inner">
+    <div class="footer-copy">&copy; 2026 MergePDF</div>
+    <div class="footer-badge">
+      <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="4" fill="#4dffaa"/></svg>
+      Files stay on your computer
+    </div>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="https://pdf-lib.js.org/" target="_blank" rel="noopener">pdf-lib</a>
+    </div>
+  </div>
 </footer>
 
 <!-- pdf-lib CDN -->
@@ -908,8 +1410,8 @@
 
   /* ── Helpers ── */
   function formatSize(bytes) {
-    if (bytes < 1024)        return bytes + ' B';
-    if (bytes < 1048576)     return (bytes / 1024).toFixed(1) + ' KB';
+    if (bytes < 1024)    return bytes + ' B';
+    if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
     return (bytes / 1048576).toFixed(1) + ' MB';
   }
 
@@ -925,7 +1427,7 @@
     progressLabel.textContent = label;
   }
 
-  /* ── Drag & Drop on drop zone ── */
+  /* ── Drop zone events ── */
   dropZone.addEventListener('dragover', e => {
     e.preventDefault();
     dropZone.classList.add('drag-over');
@@ -942,7 +1444,6 @@
     if (!e.target.classList.contains('btn-browse')) fileInput.click();
   });
 
-  /* ── File input ── */
   fileInput.addEventListener('change', () => {
     addFiles([...fileInput.files]);
     fileInput.value = '';
@@ -961,14 +1462,13 @@
     progressWrap.style.display = 'none';
   }
 
-  /* ── Remove file ── */
   function removeFile(i) {
     files.splice(i, 1);
     render();
     if (files.length === 0) successBox.style.display = 'none';
   }
 
-  /* ── Render file list ── */
+  /* ── Render ── */
   function render() {
     fileListEl.innerHTML = '';
     if (files.length === 0) {
@@ -985,17 +1485,28 @@
       item.dataset.idx = i;
 
       item.innerHTML = `
-        <div class="drag-handle" title="Drag to reorder">&#8942;&#8942;</div>
-        <div class="order-badge">${i + 1}</div>
-        <div class="file-icon">📄</div>
+        <div class="drag-handle" title="Drag to reorder">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="order-badge">${String(i + 1).padStart(2, '0')}</div>
+        <div class="file-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 2h7l3 3v9H3V2Z" stroke="#ffb8a0" stroke-width="1.2" stroke-linejoin="round" fill="none"/>
+            <path d="M10 2v3h3" stroke="#ffb8a0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+            <path d="M5 8h6M5 11h4" stroke="#ffb8a0" stroke-width="1" stroke-linecap="round" opacity="0.8"/>
+          </svg>
+        </div>
         <div class="file-info">
           <div class="file-name" title="${f.name}">${f.name}</div>
           <div class="file-meta">${formatSize(f.size)}</div>
         </div>
-        <button class="btn-remove" type="button" title="Remove file" onclick="removeFile(${i})">&#x2715;</button>
+        <button class="btn-remove" type="button" title="Remove" onclick="removeFile(${i})">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2 2l8 8M10 2L2 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </button>
       `;
 
-      /* Drag to reorder */
       item.addEventListener('dragstart', () => {
         dragSrcIdx = i;
         setTimeout(() => item.classList.add('dragging'), 0);
@@ -1025,7 +1536,7 @@
     });
   }
 
-  /* ── Merge PDFs ── */
+  /* ── Merge ── */
   async function mergePDFs() {
     if (files.length < 2) {
       showError('Please add at least 2 PDF files to merge.');
@@ -1063,7 +1574,6 @@
       const pdfBytes = await merged.save();
       setProgress(100, 'Done!');
 
-      /* Create download link */
       const blob = new Blob([pdfBytes], { type: 'application/pdf' });
       const url  = URL.createObjectURL(blob);
       const name = (document.getElementById('output-name').value.trim() || 'merged') + '.pdf';
@@ -1073,8 +1583,6 @@
       successInfo.textContent = `${totalPages} pages merged from ${files.length} files → ${name}`;
       successBox.style.display = 'block';
       progressWrap.style.display = 'none';
-
-      /* Scroll to success */
       successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
     } catch (err) {
