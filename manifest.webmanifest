@@ -1,0 +1,52 @@
+{
+  "id": "./mergepdf.html",
+  "name": "FLAVIANO MergePDF",
+  "short_name": "FLAVIANO PDF",
+  "description": "Merge PDF files locally in your browser with FLAVIANO MergePDF.",
+  "start_url": "./mergepdf.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#07111f",
+  "lang": "en",
+  "orientation": "portrait-primary",
+  "categories": [
+    "productivity",
+    "utilities",
+    "business"
+  ],
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Merge PDFs",
+      "short_name": "Merge",
+      "description": "Open the FLAVIANO MergePDF tool.",
+      "url": "./mergepdf.html#tool"
+    },
+    {
+      "name": "Privacy Policy",
+      "short_name": "Privacy",
+      "description": "Open the privacy policy page.",
+      "url": "./privacy-policy.html"
+    }
+  ]
+}

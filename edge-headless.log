@@ -1,0 +1,37 @@
+[25812:29704:0502/091729.104:WARNING:chrome\browser\extensions\activity_log\activity_log_policy.cc:71] Scheduling init
+[25812:29704:0502/091729.106:WARNING:chrome\browser\extensions\activity_log\activity_log_policy.cc:71] Scheduling init
+[4760:14724:0502/091729.175:ERROR:ui\gl\direct_composition_support.cc:243] GetGpuDriverOverlayInfo: Failed to retrieve video device
+[4760:14724:0502/091729.177:VERBOSE1:components\viz\service\main\viz_main_impl.cc:86] VizNullHypothesis is disabled (not a warning)
+[11920:29948:0502/091729.261:INFO:third_party\webrtc\rtc_base\cpu_info.cc:77] Available number of cores: 14
+[15680:5032:0502/091729.284:INFO:third_party\webrtc\rtc_base\cpu_info.cc:77] Available number of cores: 14
+[25812:29704:0502/091729.300:WARNING:chrome\browser\extensions\external_registry_loader_win.cc:283] Error observing HKLM: 5
+[3836:28956:0502/091729.315:INFO:third_party\webrtc\rtc_base\cpu_info.cc:77] Available number of cores: 14
+[27856:1764:0502/091729.317:INFO:third_party\webrtc\rtc_base\cpu_info.cc:77] Available number of cores: 14
+[30160:34572:0502/091729.326:INFO:third_party\webrtc\rtc_base\cpu_info.cc:77] Available number of cores: 14
+[34648:33544:0502/091729.329:INFO:third_party\webrtc\rtc_base\cpu_info.cc:77] Available number of cores: 14
+[20144:17500:0502/091729.357:INFO:third_party\webrtc\rtc_base\cpu_info.cc:77] Available number of cores: 14
+[32152:6924:0502/091729.389:INFO:third_party\webrtc\rtc_base\cpu_info.cc:77] Available number of cores: 14
+[31028:3596:0502/091729.442:INFO:third_party\webrtc\rtc_base\cpu_info.cc:77] Available number of cores: 14
+[2160:14180:0502/091729.508:INFO:third_party\webrtc\rtc_base\cpu_info.cc:77] Available number of cores: 14
+[25812:29704:0502/091729.512:WARNING:chrome\browser\edge_dual_engine\dual_engine_sitelist_win.cc:715] Ignoring duplicate site entry for http://prodhqpbasia.aswatson.net/hqwebapplication/authorization/login/loginentry.aspx
+[25812:29704:0502/091729.513:WARNING:chrome\browser\edge_dual_engine\dual_engine_sitelist_win.cc:715] Ignoring duplicate site entry for http://uathqpbpnshk.aswatson.net/hqwebapplication/authorization/login/loginentry.aspx
+[25812:29704:0502/091729.513:WARNING:chrome\browser\edge_dual_engine\dual_engine_sitelist_win.cc:715] Ignoring duplicate site entry for http://prodhqpbftrww.aswatson.net/hqwebapplication/authorization/login/loginentry.aspx
+[25812:29704:0502/091729.513:WARNING:chrome\browser\edge_dual_engine\dual_engine_sitelist_win.cc:715] Ignoring duplicate site entry for http://prodhqpbwtctw.aswatson.net/hqwebapplication/authorization/login/loginentry.aspx
+[25812:29704:0502/091729.513:WARNING:chrome\browser\edge_dual_engine\dual_engine_sitelist_win.cc:715] Ignoring duplicate site entry for http://prodhqpbpnshk.aswatson.net/hqwebapplication/authorization/login/loginentry.aspx
+[25812:29704:0502/091729.513:WARNING:chrome\browser\edge_dual_engine\dual_engine_sitelist_win.cc:715] Ignoring duplicate site entry for http://prodhqpbasia.aswatson.net/hqwebapplication/
+[25812:29704:0502/091729.513:WARNING:chrome\browser\edge_dual_engine\dual_engine_sitelist_win.cc:715] Ignoring duplicate site entry for http://uathqpbwtctw.aswatson.net/hqwebapplication/authorization/login/loginentry.aspx
+[25812:29704:0502/091729.513:WARNING:chrome\browser\edge_dual_engine\dual_engine_sitelist_win.cc:715] Ignoring duplicate site entry for http://uathqpbasia.aswatson.net/hqwebapplication
+[25812:29704:0502/091729.513:WARNING:chrome\browser\edge_dual_engine\dual_engine_sitelist_win.cc:715] Ignoring duplicate site entry for http://uathqpbasia.aswatson.net/hqwebapplication/authorization/login/loginentry.aspx
+[25812:29704:0502/091729.513:WARNING:chrome\browser\edge_dual_engine\dual_engine_sitelist_win.cc:715] Ignoring duplicate site entry for http://uathqpbftrww.aswatson.net/hqwebapplication/authorization/login/loginentry.aspx
+[25812:29704:0502/091729.513:WARNING:chrome\browser\edge_dual_engine\dual_engine_sitelist_win.cc:715] Ignoring duplicate site entry for http://prodhqpbhksng.aswatson.net/hqwebapplication/authorization/login/loginentry.aspx
+[7672:11336:0502/091729.610:INFO:third_party\webrtc\rtc_base\cpu_info.cc:77] Available number of cores: 14
+[25812:29704:0502/091730.070:ERROR:chrome\browser\task_manager\providers\fallback_task_provider.cc:126] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/40528867.
+[25812:29704:0502/091731.824:WARNING:components\signin\internal\identity_manager\account_fetcher_service.cc:228] Edge does not support fetching account capabilities
+[25812:29704:0502/091731.824:WARNING:components\signin\internal\identity_manager\account_fetcher_service.cc:192] Should not execute: Tests depending on this function may fail
+[25812:29704:0502/091734.749:WARNING:components\sync\base\data_type.cc:927] Unknown field number 40781
+[25812:29704:0502/091734.749:WARNING:components\sync\base\data_type.cc:927] Unknown field number 1171441
+[9176:26332:0502/091735.038:INFO:third_party\webrtc\rtc_base\cpu_info.cc:77] Available number of cores: 14
+[25812:29704:0502/091735.713:ERROR:chrome\browser\task_manager\providers\fallback_task_provider.cc:126] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/40528867.
+[25812:29644:0502/091759.153:INFO:chrome\browser\extensions\extension_garbage_collector.cc:188] Garbage collection for extensions on file thread is complete.
+[33424:34904:0502/092029.612:ERROR:services\on_device_model\ml\edge_onnxruntime_genai\oga_utils.cc:105] Edge LLM: Error getting component directory
+[33424:34904:0502/092029.612:ERROR:services\on_device_model\edge_presandbox_init.cc:19] Edge LLM Pre sandbox error: Error getting component directory
