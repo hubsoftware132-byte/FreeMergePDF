@@ -3,729 +3,934 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Privacy Policy — MergePDF</title>
-<meta name="description" content="Privacy Policy for MergePDF. Learn how we handle your data — spoiler: we don't collect any." />
+<meta
+  http-equiv="Content-Security-Policy"
+  content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:"
+/>
+<meta name="referrer" content="no-referrer" />
+<title>Privacy Policy | MergePDF</title>
+<meta
+  name="description"
+  content="Privacy policy for MergePDF, including how local PDF processing works and which third-party requests are used to load the page."
+/>
+<meta name="theme-color" content="#07111f" />
+<meta name="application-name" content="FLAVIANO MergePDF" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="FLAVIANO PDF" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" type="image/svg+xml" href="brand-mark.svg" />
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUB_ID" crossorigin="anonymous"></script>
-<!-- Media.net -->
-<script>
-  window._mNHandle = window._mNHandle || {};
-  window._mNHandle.queue = window._mNHandle.queue || [];
-  medianet_width  = "728";
-  medianet_height = "90";
-  medianet_crid   = "YOUR_MEDIANET_CID";
-  medianet_versionId = "3111299";
-</script>
-<script src="https://contextual.media.net/dmedianet.js?cid=YOUR_SITE_ID" async="async"></script>
-
+<link
+  href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+  rel="stylesheet"
+/>
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #07111f;
+    --bg-deep: #030915;
+    --surface: rgba(11, 23, 41, 0.84);
+    --surface-soft: rgba(255, 255, 255, 0.04);
+    --line: rgba(146, 168, 197, 0.16);
+    --line-strong: rgba(146, 168, 197, 0.28);
+    --text: #f2f7fb;
+    --muted: #96a8c0;
+    --muted-strong: #c4d1df;
+    --accent: #7cf2c5;
+    --warm: #ffb24c;
+    --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+    --radius-xl: 28px;
+    --radius-lg: 22px;
+    --radius-md: 16px;
+    --layout-width: 1440px;
+    --layout-gutter: 48px;
+    --layout-gutter-mobile: 24px;
+  }
 
-:root {
-  --bg: #0f0810;
-  --bg2: #150c16;
-  --surface: #1a0e1b;
-  --surface2: #221526;
-  --surface3: #2b1b2f;
-  --border: rgba(255,180,200,0.07);
-  --border-hover: rgba(255,180,200,0.18);
-  --gold: #ffb8a0;
-  --gold-dim: #e8836a;
-  --text: #f5eef0;
-  --text-muted: #7a6068;
-  --text-mid: #a8909a;
-  --green: #ff9eb5;
-  --radius: 14px;
-  --radius-sm: 8px;
-}
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+  }
 
-body {
-  font-family: 'Geist', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
-  line-height: 1.75;
-}
+  body {
+    min-height: 100vh;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(circle at top left, rgba(124, 242, 197, 0.14), transparent 28%),
+      radial-gradient(circle at 90% 10%, rgba(255, 178, 76, 0.16), transparent 24%),
+      linear-gradient(180deg, #091221 0%, #050b16 52%, #030814 100%);
+  }
 
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.6;
-}
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72), transparent 86%);
+    opacity: 0.28;
+  }
 
-/* ── NAV ── */
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 40px;
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(15,8,16,0.88);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-}
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-.logo {
-  font-family: 'Geist', sans-serif;
-  font-weight: 700;
-  font-size: 17px;
-  letter-spacing: -0.5px;
-  text-decoration: none;
-  color: var(--text);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+  .container {
+    width: min(var(--layout-width), calc(100% - var(--layout-gutter)));
+    margin: 0 auto;
+  }
 
-.logo-icon {
-  width: 30px;
-  height: 30px;
-  background: var(--gold);
-  border-radius: 7px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    background: rgba(4, 10, 20, 0.74);
+    border-bottom: 1px solid rgba(146, 168, 197, 0.12);
+  }
 
-.logo-name em { font-style: normal; color: var(--gold); }
+  .site-nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 0;
+  }
 
-.nav-back {
-  font-size: 12px;
-  font-family: 'DM Mono', monospace;
-  color: var(--text-muted);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 16px;
-  border: 1px solid var(--border);
-  border-radius: 99px;
-  transition: all 0.15s;
-  letter-spacing: 0.3px;
-}
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px 10px 12px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(12, 77, 168, 0.08);
+    box-shadow: 0 18px 40px rgba(4, 10, 20, 0.28);
+  }
 
-.nav-back:hover { border-color: var(--border-hover); color: var(--text); }
+  .logo-mark {
+    width: 86px;
+    height: 72px;
+    display: block;
+    flex-shrink: 0;
+  }
 
-/* ── AD ── */
-.ad-slot {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--surface);
-  border: 1px dashed rgba(255,255,255,0.05);
-  border-radius: 10px;
-  color: var(--text-muted);
-  font-size: 10px;
-  font-family: 'DM Mono', monospace;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  overflow: hidden;
-  position: relative;
-}
-.ad-slot::before {
-  content: 'Advertisement';
-  position: absolute;
-  top: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 8px;
-  letter-spacing: 1.5px;
-  color: var(--text-muted);
-  opacity: 0.5;
-  white-space: nowrap;
-}
-.ad-inline {
-  width: 100%;
-  height: 90px;
-}
+  .logo-mark img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
 
-/* ── PAGE HERO ── */
-.page-hero {
-  padding: 80px 24px 64px;
-  border-bottom: 1px solid var(--border);
-  position: relative;
-  overflow: hidden;
-}
+  .logo-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    line-height: 0.96;
+    white-space: nowrap;
+  }
 
-.page-hero::before {
-  content: '';
-  position: absolute;
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 400px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,100,140,0.06) 0%, transparent 70%);
-  pointer-events: none;
-}
+  .logo-name {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    color: #0f4aa7;
+    font-size: clamp(1.28rem, 0.8vw + 1.02rem, 1.72rem);
+    font-weight: 800;
+    letter-spacing: -0.08em;
+  }
 
-.page-hero-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 40px;
-}
+  .logo-subtitle {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    color: #31353c;
+    font-size: clamp(0.74rem, 0.3vw + 0.68rem, 0.92rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
 
-.page-tag {
-  display: inline-block;
-  background: rgba(255,120,140,0.08);
-  border: 1px solid rgba(255,140,130,0.22);
-  color: var(--gold);
-  font-size: 10px;
-  font-family: 'DM Mono', monospace;
-  font-weight: 500;
-  padding: 5px 14px;
-  border-radius: 99px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-}
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
 
-.page-hero h1 {
-  font-family: 'Instrument Serif', serif;
-  font-size: clamp(36px, 5vw, 60px);
-  font-weight: 400;
-  letter-spacing: -2px;
-  color: var(--text);
-  line-height: 1.05;
-}
+  .nav-link {
+    color: var(--muted);
+    font-size: 0.95rem;
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    transition: 0.2s ease;
+  }
 
-.page-hero-meta {
-  text-align: right;
-  flex-shrink: 0;
-}
+  .nav-link:hover {
+    color: var(--text);
+    border-color: rgba(146, 168, 197, 0.18);
+    background: rgba(255, 255, 255, 0.04);
+  }
 
-.last-updated {
-  display: inline-block;
-  font-size: 11px;
-  font-family: 'DM Mono', monospace;
-  color: var(--text-muted);
-  background: var(--surface2);
-  padding: 5px 13px;
-  border-radius: 99px;
-  border: 1px solid var(--border);
-  margin-bottom: 12px;
-}
+  .nav-link.is-cta {
+    color: var(--bg-deep);
+    background: linear-gradient(135deg, var(--accent) 0%, #c8ffe9 100%);
+    border-color: transparent;
+    font-weight: 700;
+  }
 
-.hero-tagline {
-  font-size: 13px;
-  color: var(--text-muted);
-  max-width: 240px;
-  line-height: 1.6;
-  text-align: right;
-}
+  .install-link {
+    cursor: pointer;
+    color: var(--text);
+    font-weight: 700;
+    border-color: rgba(124, 242, 197, 0.22);
+    background: rgba(124, 242, 197, 0.08);
+  }
 
-/* ── LAYOUT ── */
-.page-layout {
-  display: flex;
-  gap: 48px;
-  max-width: 1100px;
-  margin: 60px auto;
-  padding: 0 24px 100px;
-  width: 100%;
-  align-items: flex-start;
-}
+  .install-link:hover {
+    border-color: rgba(124, 242, 197, 0.4);
+    background: rgba(124, 242, 197, 0.15);
+  }
 
-/* ── TOC ── */
-.toc {
-  width: 210px;
-  flex-shrink: 0;
-  position: sticky;
-  top: 90px;
-}
+  .install-link[hidden] {
+    display: none !important;
+  }
 
-.toc-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 16px;
-}
+  .hero {
+    padding: 58px 0 28px;
+  }
 
-.toc-title {
-  font-size: 10px;
-  font-family: 'DM Mono', monospace;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--text-muted);
-}
+  .hero-card,
+  .toc,
+  .content-card,
+  .rail-card,
+  footer {
+    border: 1px solid var(--line);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+  }
 
-.toc-line { flex: 1; height: 1px; background: var(--border); }
+  .hero-card {
+    border-radius: var(--radius-xl);
+    padding: 34px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.62fr);
+    gap: 26px;
+    align-items: end;
+  }
 
-.toc-list { list-style: none; }
-.toc-list li { margin-bottom: 2px; }
-.toc-list a {
-  font-size: 12px;
-  font-family: 'DM Mono', monospace;
-  color: var(--text-muted);
-  text-decoration: none;
-  padding: 6px 10px;
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.15s;
-  border-left: 2px solid transparent;
-}
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    margin-bottom: 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(124, 242, 197, 0.28);
+    background: rgba(124, 242, 197, 0.08);
+    color: var(--accent);
+    font-size: 0.83rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
 
-.toc-list a:hover {
-  color: var(--text);
-  background: var(--surface);
-  border-left-color: var(--gold);
-}
+  .eyebrow::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: currentColor;
+    box-shadow: 0 0 18px currentColor;
+  }
 
-.toc-num {
-  font-size: 9px;
-  color: var(--text-muted);
-  opacity: 0.5;
-  flex-shrink: 0;
-}
+  .hero h1 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(2.4rem, 6vw, 4.8rem);
+    line-height: 0.96;
+    letter-spacing: -0.06em;
+    max-width: 10ch;
+  }
 
-/* ── CONTENT ── */
-.content {
-  flex: 1;
-  min-width: 0;
-  max-width: 680px;
-}
+  .hero p {
+    margin-top: 18px;
+    max-width: 58ch;
+    color: var(--muted-strong);
+    line-height: 1.75;
+    font-size: 1.03rem;
+  }
 
-.section {
-  margin-bottom: 56px;
-  padding-bottom: 56px;
-  border-bottom: 1px solid var(--border);
-}
+  .hero-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 18px;
+    align-self: stretch;
+  }
 
-.section:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
+  .hero-meta-stack {
+    display: grid;
+    gap: 14px;
+  }
 
-.section-num {
-  font-size: 10px;
-  font-family: 'DM Mono', monospace;
-  font-weight: 500;
-  color: var(--gold);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin-bottom: 12px;
-  opacity: 0.8;
-}
+  .hero-chip,
+  .plain-box,
+  .info-box {
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(146, 168, 197, 0.14);
+  }
 
-.section h2 {
-  font-family: 'Instrument Serif', serif;
-  font-weight: 400;
-  font-size: 30px;
-  letter-spacing: -1px;
-  margin-bottom: 20px;
-  scroll-margin-top: 100px;
-  color: var(--text);
-  line-height: 1.15;
-}
+  .hero-chip {
+    padding: 18px;
+  }
 
-.section p {
-  font-size: 15px;
-  color: var(--text-mid);
-  margin-bottom: 14px;
-  line-height: 1.8;
-}
+  .hero-chip strong {
+    display: block;
+    color: var(--warm);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.76rem;
+    margin-bottom: 8px;
+  }
 
-.section p:last-child { margin-bottom: 0; }
+  .hero-chip span {
+    color: var(--muted-strong);
+    line-height: 1.6;
+  }
 
-.section ul {
-  list-style: none;
-  margin: 16px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+  .hero-ad {
+    position: relative;
+    padding: 22px;
+    border-radius: 24px;
+    border: 1px solid rgba(146, 168, 197, 0.16);
+    background:
+      radial-gradient(circle at top right, rgba(124, 242, 197, 0.18), transparent 30%),
+      radial-gradient(circle at bottom left, rgba(255, 178, 76, 0.16), transparent 28%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.03));
+    overflow: hidden;
+  }
 
-.section ul li {
-  font-size: 15px;
-  color: var(--text-mid);
-  padding-left: 20px;
-  position: relative;
-  line-height: 1.75;
-}
+  .hero-ad::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+  }
 
-.section ul li::before {
-  content: '–';
-  position: absolute;
-  left: 0;
-  color: var(--gold);
-  font-family: 'DM Mono', monospace;
-  opacity: 0.6;
-}
+  .hero-ad-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(146, 168, 197, 0.14);
+    color: var(--warm);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
 
-.section ul li strong {
-  color: var(--text);
-  font-weight: 600;
-}
+  .hero-ad-label::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: currentColor;
+    box-shadow: 0 0 18px currentColor;
+  }
 
-/* ── CALLOUT BOXES ── */
-.highlight-box {
-  background: rgba(255,100,140,0.05);
-  border: 1px solid rgba(255,130,110,0.18);
-  border-radius: var(--radius);
-  padding: 20px 22px;
-  margin-bottom: 20px;
-  position: relative;
-  overflow: hidden;
-}
+  .hero-ad h2 {
+    margin-top: 14px;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(1.7rem, 2vw, 2.25rem);
+    line-height: 0.98;
+    letter-spacing: -0.05em;
+  }
 
-.highlight-box::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--gold);
-  border-radius: 0 2px 2px 0;
-}
+  .hero-ad p {
+    margin-top: 12px;
+    max-width: none;
+    font-size: 0.98rem;
+    line-height: 1.75;
+  }
 
-.highlight-box p {
-  font-size: 14px;
-  margin: 0;
-  color: var(--text);
-  line-height: 1.7;
-}
+  .hero-ad-contact {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 18px;
+    padding: 12px 16px;
+    border-radius: 999px;
+    background: rgba(124, 242, 197, 0.1);
+    border: 1px solid rgba(124, 242, 197, 0.18);
+    color: var(--text);
+    font-weight: 700;
+    word-break: break-word;
+  }
 
-.highlight-box strong { color: var(--gold); }
+  .hero-ad-contact:hover {
+    color: var(--bg-deep);
+    background: linear-gradient(135deg, var(--accent) 0%, #c8ffe9 100%);
+    border-color: transparent;
+  }
 
-.info-box {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px 20px;
-  margin-bottom: 0;
-}
+  .last-updated {
+    display: inline-flex;
+    margin-top: 18px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(146, 168, 197, 0.16);
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
 
-.info-label {
-  font-size: 10px;
-  font-family: 'DM Mono', monospace;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--gold);
-  margin-bottom: 10px;
-  opacity: 0.8;
-}
+  .policy-layout {
+    padding: 14px 0 80px;
+  }
 
-.info-box p {
-  font-size: 14px;
-  margin: 0;
-  color: var(--text-muted);
-  line-height: 1.75;
-}
+  .policy-grid {
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr) 280px;
+    gap: 18px;
+    align-items: start;
+  }
 
-.info-box p a {
-  color: var(--gold);
-  text-decoration: none;
-}
+  .toc,
+  .content-card,
+  .rail-card {
+    border-radius: var(--radius-lg);
+  }
 
-.info-box p a:hover { text-decoration: underline; }
+  .toc {
+    position: sticky;
+    top: 92px;
+    padding: 22px;
+  }
 
-/* ── CONTACT CARD ── */
-.contact-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 24px;
-  margin-top: 18px;
-}
+  .toc h2,
+  .rail-card h2 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: -0.04em;
+    margin-bottom: 14px;
+  }
 
-.contact-card p {
-  font-size: 14px;
-  color: var(--text-muted);
-  margin-bottom: 16px;
-}
+  .toc nav {
+    display: grid;
+    gap: 8px;
+  }
 
-.contact-email {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'DM Mono', monospace;
-  font-size: 14px;
-  color: var(--gold);
-  text-decoration: none;
-  border: 1px solid rgba(255,140,130,0.22);
-  padding: 10px 18px;
-  border-radius: var(--radius-sm);
-  background: rgba(255,130,110,0.07);
-  transition: all 0.15s;
-}
+  .toc a {
+    padding: 10px 12px;
+    border-radius: 14px;
+    color: var(--muted);
+    border: 1px solid transparent;
+    transition: 0.16s ease;
+  }
 
-.contact-email:hover {
-  background: rgba(255,130,110,0.11);
-  border-color: rgba(255,140,120,0.38);
-}
+  .toc a:hover {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(146, 168, 197, 0.16);
+  }
 
-/* ── FOOTER ── */
-footer {
-  margin-top: auto;
-  padding: 28px 40px;
-  border-top: 1px solid var(--border);
-  text-align: center;
-  font-size: 12px;
-  font-family: 'DM Mono', monospace;
-  color: var(--text-muted);
-}
+  .content-card {
+    padding: 26px;
+  }
 
-footer a {
-  color: var(--text-muted);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-footer a:hover { color: var(--gold); }
+  .section {
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(146, 168, 197, 0.14);
+  }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 800px) {
-  .toc { display: none; }
-  .page-layout { gap: 0; }
-  .content { max-width: 100%; }
-  .page-hero-inner { flex-direction: column; align-items: flex-start; }
-  .page-hero-meta { text-align: left; }
-  .hero-tagline { text-align: left; }
-}
+  .section:first-child {
+    padding-top: 0;
+  }
 
-@media (max-width: 600px) {
-  nav { padding: 14px 20px; }
-  .page-hero { padding: 60px 20px 44px; }
-  .page-layout { padding: 0 20px 80px; margin-top: 40px; }
-}
+  .section:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
 
-/* ── ENTRY ANIMATIONS ── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+  .section-index {
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
 
-.page-tag { animation: fadeUp 0.4s ease both; }
-.page-hero h1 { animation: fadeUp 0.4s ease 0.08s both; }
-.page-hero-meta { animation: fadeUp 0.4s ease 0.16s both; }
+  .section h3 {
+    margin-top: 10px;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.72rem;
+    letter-spacing: -0.05em;
+    scroll-margin-top: 100px;
+  }
+
+  .section p,
+  .section li {
+    color: var(--muted-strong);
+    line-height: 1.8;
+    font-size: 1rem;
+  }
+
+  .section p + p {
+    margin-top: 14px;
+  }
+
+  .section ul {
+    margin-top: 14px;
+    display: grid;
+    gap: 10px;
+    list-style: none;
+  }
+
+  .section li {
+    position: relative;
+    padding-left: 18px;
+  }
+
+  .section li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.72em;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--warm);
+  }
+
+  .plain-box,
+  .info-box {
+    padding: 18px 20px;
+    margin: 18px 0;
+  }
+
+  .plain-box strong,
+  .info-box strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .plain-box strong {
+    color: var(--accent);
+  }
+
+  .info-box strong {
+    color: var(--warm);
+  }
+
+  .plain-box p,
+  .info-box p {
+    margin: 0;
+  }
+
+  .rail-card {
+    position: sticky;
+    top: 92px;
+    padding: 22px;
+    display: grid;
+    gap: 14px;
+  }
+
+  .rail-card p {
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .rail-list {
+    display: grid;
+    gap: 10px;
+  }
+
+  .rail-item {
+    padding: 14px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(146, 168, 197, 0.14);
+  }
+
+  .rail-item strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+  }
+
+  .rail-item span {
+    color: var(--muted);
+    line-height: 1.6;
+    font-size: 0.94rem;
+  }
+
+  .link {
+    color: var(--accent);
+  }
+
+  .link:hover {
+    color: #cffff0;
+  }
+
+  footer {
+    width: min(var(--layout-width), calc(100% - var(--layout-gutter)));
+    margin: 0 auto 28px;
+    border-radius: 24px;
+    padding: 22px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  footer nav {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  footer a:hover {
+    color: var(--text);
+  }
+
+  @media (max-width: 1100px) {
+    .hero-card,
+    .policy-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .toc,
+    .rail-card {
+      position: static;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .container,
+    footer {
+      width: min(calc(100% - var(--layout-gutter-mobile)), var(--layout-width));
+    }
+
+    .logo {
+      gap: 10px;
+      padding: 8px 12px 8px 10px;
+      border-radius: 18px;
+    }
+
+    .logo-mark {
+      width: 68px;
+      height: 58px;
+    }
+
+    .logo-copy {
+      gap: 3px;
+    }
+
+    .site-nav .container {
+      padding: 14px 0;
+      align-items: flex-start;
+    }
+
+    .hero {
+      padding-top: 34px;
+    }
+
+    .hero-card,
+    .toc,
+    .content-card,
+    .rail-card,
+    footer {
+      border-radius: 22px;
+    }
+
+    .hero-card,
+    .content-card,
+    .toc,
+    .rail-card {
+      padding: 20px;
+    }
+
+    footer {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    footer nav {
+      justify-content: flex-start;
+    }
+  }
 </style>
 </head>
 <body>
-
-<!-- NAV -->
-<nav>
-  <a class="logo" href="index.html">
-    <div class="logo-icon">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <path d="M3 2h7l3 3v9H3V2Z" fill="#111" stroke="#111"/>
-        <path d="M10 2v3h3" fill="none" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
-        <path d="M5 8h6M5 11h4" stroke="#ffb8a0" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
+  <header class="site-nav">
+    <div class="container">
+      <a class="logo" href="mergepdf.html" aria-label="FLAVIANO Merge PDF Workspace">
+        <span class="logo-mark" aria-hidden="true">
+          <img src="brand-mark.svg" alt="" />
+        </span>
+        <span class="logo-copy">
+          <strong class="logo-name">FLAVIANO</strong>
+          <span class="logo-subtitle">Merge PDF Workspace</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="nav-link" href="mergepdf.html">Home</a>
+        <a class="nav-link" href="#overview">Overview</a>
+        <a class="nav-link" href="#third-parties">Third parties</a>
+        <button class="nav-link install-link" type="button" data-install-app>Install on Desktop or Phone</button>
+        <a class="nav-link is-cta" href="mergepdf.html#tool">Open the tool</a>
+      </nav>
     </div>
-    <span class="logo-name">Merge<em>PDF</em></span>
-  </a>
-  <a class="nav-back" href="index.html">← Back to Tool</a>
-</nav>
+  </header>
 
-<!-- AD: Leaderboard -->
-<div class="ad-slot ad-inline" style="border-radius:0; border-left:none; border-right:none; border-top:none; height:90px;">
-  <ins class="adsbygoogle"
-    style="display:inline-block;width:728px;height:90px"
-    data-ad-client="ca-pub-YOUR_PUB_ID"
-    data-ad-slot="YOUR_SLOT_ID_1">
-  </ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
-
-<!-- HERO -->
-<div class="page-hero">
-  <div class="page-hero-inner">
-    <div>
-      <div class="page-tag">Legal</div>
-      <h1>Privacy<br><em>Policy</em></h1>
-    </div>
-    <div class="page-hero-meta">
-      <div class="last-updated">Last updated: May 1, 2026</div>
-      <p class="hero-tagline">Built private by design. Here's exactly what that means.</p>
-    </div>
-  </div>
-</div>
-
-<!-- CONTENT -->
-<div class="page-layout">
-
-  <!-- Table of Contents -->
-  <nav class="toc" aria-label="Table of contents">
-    <div class="toc-header">
-      <div class="toc-title">Contents</div>
-      <div class="toc-line"></div>
-    </div>
-    <ul class="toc-list">
-      <li><a href="#overview"><span class="toc-num">01</span>Overview</a></li>
-      <li><a href="#data-collected"><span class="toc-num">02</span>Data we collect</a></li>
-      <li><a href="#file-privacy"><span class="toc-num">03</span>Your files</a></li>
-      <li><a href="#cookies"><span class="toc-num">04</span>Cookies</a></li>
-      <li><a href="#advertising"><span class="toc-num">05</span>Advertising</a></li>
-      <li><a href="#third-parties"><span class="toc-num">06</span>Third parties</a></li>
-      <li><a href="#children"><span class="toc-num">07</span>Children's privacy</a></li>
-      <li><a href="#your-rights"><span class="toc-num">08</span>Your rights</a></li>
-      <li><a href="#changes"><span class="toc-num">09</span>Policy changes</a></li>
-      <li><a href="#contact"><span class="toc-num">10</span>Contact us</a></li>
-    </ul>
-  </nav>
-
-  <!-- Main content -->
-  <div class="content">
-
-    <div class="section" id="overview">
-      <div class="section-num">01</div>
-      <h2>Overview</h2>
-      <div class="highlight-box">
-        <p><strong>Short version:</strong> MergePDF runs entirely in your browser. Your PDF files are never uploaded to any server. We do not store, read, or transmit your documents — ever.</p>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <div>
+            <div class="eyebrow">Privacy policy</div>
+            <h1>Clear privacy terms for a browser-based PDF tool.</h1>
+            <p>
+              MergePDF is designed so the merge itself happens on your device. This page explains what the tool does locally,
+              what external requests are still involved in loading the page, and what that means in practice.
+            </p>
+            <div class="last-updated">Last updated: May 2, 2026</div>
+          </div>
+          <div class="hero-meta">
+            <div class="hero-ad" aria-label="Advertisement contact">
+              <div class="hero-ad-label">Advertisement Space</div>
+              <h2>Advertise here</h2>
+              <p>
+                This space is available for advertisement. There is no active advertisement here yet.
+                For placement inquiries, please contact:
+              </p>
+              <a class="hero-ad-contact" href="mailto:hubsoftware132@gmail.com">hubsoftware132@gmail.com</a>
+            </div>
+            <div class="hero-meta-stack">
+              <div class="hero-chip">
+                <strong>Short version</strong>
+                <span>The app does not upload your PDF contents to a server as part of the merge flow.</span>
+              </div>
+              <div class="hero-chip">
+                <strong>Important nuance</strong>
+                <span>The current build bundles its PDF library locally, but it still loads fonts from Google unless you self-host those files too.</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <p>This Privacy Policy explains how MergePDF ("we", "us", or "our") handles information when you use our website at <strong>mergepdf.com</strong> (or wherever this site is hosted). By using our service, you agree to the practices described here.</p>
-      <p>We are committed to protecting your privacy and being fully transparent about how our service works.</p>
-    </div>
+    </section>
 
-    <div class="section" id="data-collected">
-      <div class="section-num">02</div>
-      <h2>Data we collect</h2>
-      <p>We collect minimal data necessary to operate the website and show relevant advertising. This may include:</p>
-      <ul>
-        <li><strong>Usage data</strong> — pages visited, time on site, browser type, operating system, and referring URL (collected automatically by our hosting provider and analytics, if enabled)</li>
-        <li><strong>IP address</strong> — used for general geographic analytics (country-level only) and fraud prevention by our ad partners</li>
-        <li><strong>Device information</strong> — screen size, browser version, and device type for optimizing the user experience</li>
-        <li><strong>Cookies and tracking pixels</strong> — set by advertising partners (see Advertising section below)</li>
-      </ul>
-      <p>We do <strong>not</strong> collect your name, email address, or any account information — there is no sign-up required to use MergePDF.</p>
-    </div>
+    <section class="policy-layout">
+      <div class="container policy-grid">
+        <aside class="toc" aria-label="Table of contents">
+          <h2>On this page</h2>
+          <nav>
+            <a href="#overview">Overview</a>
+            <a href="#files">Files and document content</a>
+            <a href="#technical-data">Technical website data</a>
+            <a href="#cookies">Cookies</a>
+            <a href="#third-parties">Third-party services</a>
+            <a href="#choices">Your choices</a>
+            <a href="#changes">Policy changes</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </aside>
 
-    <div class="section" id="file-privacy">
-      <div class="section-num">03</div>
-      <h2>Your files &amp; documents</h2>
-      <div class="highlight-box">
-        <p><strong>Your PDF files never leave your device.</strong> All merging is performed locally using JavaScript running inside your browser. No file data is sent to our servers or any third party.</p>
+        <article class="content-card">
+          <section class="section" id="overview">
+            <div class="section-index">01</div>
+            <h3>Overview</h3>
+            <div class="plain-box">
+              <strong>Plain English</strong>
+              <p>
+                MergePDF is a browser-based utility. The core merge action happens locally in your browser, which means the app does not need to upload your PDF contents to complete the job.
+              </p>
+            </div>
+            <p>
+              This privacy policy explains what information is and is not handled when you use MergePDF, whether from a local file, a hosted static site, or a deployed copy using the same front-end code.
+            </p>
+            <p>
+              If you are using a customized or self-hosted version of this project, your deployment choices may change some details below, especially around hosting logs and third-party asset loading.
+            </p>
+          </section>
+
+          <section class="section" id="files">
+            <div class="section-index">02</div>
+            <h3>Files and document content</h3>
+            <div class="plain-box">
+              <strong>What matters most</strong>
+              <p>Your PDF contents stay on your device during the merge process. The application combines them in browser memory and gives you a local download.</p>
+            </div>
+            <p>
+              MergePDF does not require an account, does not ask you to create a profile, and does not intentionally transmit the contents of your selected PDF files to a server as part of the merge workflow.
+            </p>
+            <p>
+              Files you add are handled inside the browser session so they can be read, ordered, merged, and exported. Once you close the tab or clear the session, that in-memory working state is removed from the page.
+            </p>
+            <p>
+              If a PDF is corrupted or password-protected, the file may fail to load locally and the tool may show an error. That error handling still happens client-side.
+            </p>
+          </section>
+
+          <section class="section" id="technical-data">
+            <div class="section-index">03</div>
+            <h3>Technical website data</h3>
+            <p>
+              Even though the merge itself is local, visiting a web page still creates normal web requests. Depending on how MergePDF is hosted, those requests can expose standard technical data such as:
+            </p>
+            <ul>
+              <li>Your IP address</li>
+              <li>Browser and device information sent in request headers</li>
+              <li>Requested page URLs and timestamps</li>
+              <li>Basic server or CDN logs needed to deliver the static files</li>
+            </ul>
+            <div class="info-box">
+              <strong>Why this is different from file uploads</strong>
+              <p>
+                These ordinary page-load requests help deliver the website itself. They are separate from the merge workflow and do not mean your PDF contents were uploaded.
+              </p>
+            </div>
+            <p>
+              This build also adds a restrictive in-page Content Security Policy and serves the PDF processing library from a local file, which reduces third-party script exposure during normal use.
+            </p>
+            <p>
+              If you open a local offline copy instead of a hosted deployment, server-side request logging may not apply. The details depend on how the page is being served.
+            </p>
+          </section>
+
+          <section class="section" id="cookies">
+            <div class="section-index">04</div>
+            <h3>Cookies</h3>
+            <p>
+              The current MergePDF build does not use an account system, does not include advertising scripts, and does not set app-specific tracking cookies for the merge workflow itself.
+            </p>
+            <p>
+              That said, standard browser behavior, hosting layers, or third-party asset providers may still involve caching or other browser storage depending on your environment and browser settings.
+            </p>
+            <p>
+              If you self-host the font files as well, you can reduce the remaining third-party asset requests related to page delivery.
+            </p>
+          </section>
+
+          <section class="section" id="third-parties">
+            <div class="section-index">05</div>
+            <h3>Third-party services</h3>
+            <p>
+              The current front-end uses a very small number of third-party services:
+            </p>
+            <ul>
+              <li><strong>Google Fonts</strong> for typography. Loading those fonts may send technical request data such as IP address and user agent to Google.</li>
+            </ul>
+            <p>
+              Google receives the usual information involved in serving static web assets. It does not need the contents of your PDF files to deliver those fonts.
+            </p>
+            <div class="info-box">
+              <strong>Local PDF processing bundle</strong>
+              <p>
+                The <strong>pdf-lib</strong> script is now shipped with this app instead of being loaded from a runtime CDN, which removes one external script dependency from the page.
+              </p>
+            </div>
+            <p>
+              You can review the PDF library used by this tool at
+              <a class="link" href="https://pdf-lib.js.org/" target="_blank" rel="noopener">pdf-lib.js.org</a>.
+            </p>
+          </section>
+
+          <section class="section" id="choices">
+            <div class="section-index">06</div>
+            <h3>Your choices</h3>
+            <p>You have a few practical ways to tighten privacy even further when using or deploying MergePDF:</p>
+            <ul>
+              <li>Use a local copy of the page instead of a public hosted deployment.</li>
+              <li>Self-host the font files so the page no longer depends on Google Fonts.</li>
+              <li>Use browser settings or extensions that limit external requests.</li>
+              <li>Clear your browser session after finishing sensitive document work.</li>
+            </ul>
+            <p>
+              If you are publishing your own version of this tool, you should also review your hosting provider's logging behavior and update this policy to match your exact deployment.
+            </p>
+          </section>
+
+          <section class="section" id="changes">
+            <div class="section-index">07</div>
+            <h3>Policy changes</h3>
+            <p>
+              This policy may be updated if the front-end changes, if new third-party services are introduced, or if the hosting setup changes in a way that affects privacy expectations.
+            </p>
+            <p>
+              When that happens, the "Last updated" date at the top of this page should be revised so readers can see when the policy was last reviewed.
+            </p>
+          </section>
+
+          <section class="section" id="contact">
+            <div class="section-index">08</div>
+            <h3>Contact</h3>
+            <p>
+              Questions about privacy, deployment, or data handling can be sent to
+              <a class="link" href="mailto:privacy@mergepdf.com">privacy@mergepdf.com</a>.
+            </p>
+            <p>
+              If you are reusing this project for your own deployment, replace that address with your real support or privacy contact before publishing.
+            </p>
+          </section>
+        </article>
+
+        <aside class="rail-card" aria-label="Privacy summary">
+          <h2>What this means in practice</h2>
+          <p>
+            MergePDF is much more private than upload-based tools, but not magically request-free. The browser still has to fetch page assets unless you self-host everything.
+          </p>
+          <div class="rail-list">
+            <div class="rail-item">
+              <strong>PDF contents</strong>
+              <span>Processed locally in the browser.</span>
+            </div>
+            <div class="rail-item">
+              <strong>Page delivery</strong>
+              <span>Standard web requests still apply when hosted online.</span>
+            </div>
+            <div class="rail-item">
+              <strong>Current build</strong>
+              <span>No ad stack, no signup flow, no analytics layer in the shipped page.</span>
+            </div>
+          </div>
+        </aside>
       </div>
-      <p>This is a core design principle of MergePDF — not just a promise. Because the merging happens client-side using the open-source <strong>pdf-lib</strong> library, it is technically impossible for us to access your file contents.</p>
-      <p>Once you close your browser tab, all processed files are immediately cleared from memory. We have no copies of your documents at any point.</p>
-    </div>
+    </section>
+  </main>
 
-    <!-- AD: Mid-content inline -->
-    <div class="ad-slot ad-inline" style="margin: 40px 0; border-radius: 10px;">
-      <ins class="adsbygoogle"
-        style="display:inline-block;width:728px;height:90px"
-        data-ad-client="ca-pub-YOUR_PUB_ID"
-        data-ad-slot="YOUR_SLOT_ID_2">
-      </ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-
-    <div class="section" id="cookies">
-      <div class="section-num">04</div>
-      <h2>Cookies</h2>
-      <p>We use the following types of cookies on this website:</p>
-      <ul>
-        <li><strong>Essential cookies</strong> — required for the site to function correctly. These do not track you.</li>
-        <li><strong>Analytics cookies</strong> — if analytics are enabled, these help us understand how visitors use the site in aggregate, anonymized form.</li>
-        <li><strong>Advertising cookies</strong> — set by Google AdSense and Media.net to show relevant ads. These may track your browsing behavior across websites.</li>
-      </ul>
-      <p>You can control or disable cookies through your browser settings. Note that disabling advertising cookies will not remove ads — it will only make them less relevant to you.</p>
-    </div>
-
-    <div class="section" id="advertising">
-      <div class="section-num">05</div>
-      <h2>Advertising</h2>
-      <p>MergePDF is free to use and is supported by advertising. We display ads through the following networks:</p>
-
-      <div class="info-box" style="margin-top:16px">
-        <div class="info-label">Google AdSense</div>
-        <p>Google uses cookies to serve ads based on your prior visits to this website and other sites. You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google's Ad Settings</a>.</p>
-      </div>
-
-      <div class="info-box" style="margin-top:12px">
-        <div class="info-label">Media.net</div>
-        <p>Media.net uses contextual and behavioral data to display relevant ads. Their privacy policy is available at <a href="https://www.media.net/privacy-policy" target="_blank" rel="noopener">media.net/privacy-policy</a>.</p>
-      </div>
-
-      <p style="margin-top:20px">These advertising partners may collect data such as your IP address, device identifiers, and browsing behavior to serve targeted advertisements. We do not have direct access to this data.</p>
-      <p>We do not sell your personal data to advertisers or any other third parties.</p>
-    </div>
-
-    <div class="section" id="third-parties">
-      <div class="section-num">06</div>
-      <h2>Third-party services</h2>
-      <p>MergePDF uses the following third-party services, each with their own privacy policies:</p>
-      <ul>
-        <li><strong>Google Fonts</strong> — loads fonts from Google's servers. Google may log your IP address. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--gold)">Google Privacy Policy</a></li>
-        <li><strong>pdf-lib (Cloudflare CDN)</strong> — the open-source PDF library is loaded from Cloudflare's CDN. No user content is transmitted.</li>
-        <li><strong>Google AdSense</strong> — advertising network. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--gold)">Google Privacy Policy</a></li>
-        <li><strong>Media.net</strong> — advertising network. <a href="https://www.media.net/privacy-policy" target="_blank" rel="noopener" style="color:var(--gold)">Media.net Privacy Policy</a></li>
-      </ul>
-    </div>
-
-    <div class="section" id="children">
-      <div class="section-num">07</div>
-      <h2>Children's privacy</h2>
-      <p>MergePDF is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has provided personal information through our site, please contact us and we will promptly delete it.</p>
-    </div>
-
-    <div class="section" id="your-rights">
-      <div class="section-num">08</div>
-      <h2>Your rights</h2>
-      <p>Depending on your location, you may have the following rights regarding your personal data:</p>
-      <ul>
-        <li><strong>Right to access</strong> — request a copy of the data we hold about you</li>
-        <li><strong>Right to deletion</strong> — request that we delete your personal data</li>
-        <li><strong>Right to opt out</strong> — opt out of personalized advertising via Google and Media.net opt-out tools</li>
-        <li><strong>GDPR (EU users)</strong> — you have rights under the General Data Protection Regulation including the right to data portability and to lodge a complaint with a supervisory authority</li>
-        <li><strong>CCPA (California users)</strong> — you have the right to know what data is collected and to opt out of the sale of personal information</li>
-      </ul>
-      <p>To exercise these rights, contact us at the email below.</p>
-    </div>
-
-    <div class="section" id="changes">
-      <div class="section-num">09</div>
-      <h2>Policy changes</h2>
-      <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last updated" date at the top of this page. We encourage you to review this policy periodically. Continued use of MergePDF after changes constitutes your acceptance of the updated policy.</p>
-    </div>
-
-    <div class="section" id="contact">
-      <div class="section-num">10</div>
-      <h2>Contact us</h2>
-      <p>If you have any questions, concerns, or requests regarding this Privacy Policy, please reach out:</p>
-      <div class="contact-card">
-        <p>We typically respond within 2–3 business days.</p>
-        <a class="contact-email" href="mailto:privacy@mergepdf.com">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <rect x="1" y="3" width="12" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
-            <path d="M1 4l6 4 6-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-          </svg>
-          privacy@mergepdf.com
-        </a>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <p>&copy; 2026 MergePDF &mdash; <a href="index.html">Home</a> &middot; <a href="privacy-policy.html">Privacy Policy</a> &middot; Powered by <a href="https://pdf-lib.js.org/" target="_blank" rel="noopener">pdf-lib</a></p>
-</footer>
-
+  <footer>
+    <p>&copy; 2026 MergePDF. Client-side merge flow with a clearer privacy explanation.</p>
+    <nav aria-label="Footer">
+      <a href="mergepdf.html">Home</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="https://pdf-lib.js.org/" target="_blank" rel="noopener">pdf-lib</a>
+    </nav>
+  </footer>
+  <script src="pwa.js?v=20260502-1" defer></script>
 </body>
 </html>
